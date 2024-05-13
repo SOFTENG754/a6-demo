@@ -21,13 +21,14 @@ public class LoginStepDefinitions {
 
     @Before
     public void setup() {
-        System.setProperty("webdriver.chrome.driver", "webdrivers/macos/chromedriver");
-
         ChromeOptions options = new ChromeOptions();
 
         if (System.getenv().getOrDefault("headless", "false").equals("true")) {
             options.addArguments("--headless");
+            System.setProperty("webdriver.chrome.driver", "webdrivers/linux/chromedriver");
             // WebDriverManager.chromedriver().setup();
+        } else {
+            System.setProperty("webdriver.chrome.driver", "webdrivers/macos/chromedriver");
         }
 
         options.addArguments("--no-sandbox");
