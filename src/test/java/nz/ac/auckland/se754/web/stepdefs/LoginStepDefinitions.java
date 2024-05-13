@@ -6,7 +6,6 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import nz.ac.auckland.se754.web.pages.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -22,15 +21,14 @@ public class LoginStepDefinitions {
 
     @Before
     public void setup() {
-        System.setProperty("webdriver.chrome.driver", "webdrivers/macos/chromedriver");
-
         ChromeOptions options = new ChromeOptions();
 
         if (System.getenv().getOrDefault("headless", "false").equals("true")) {
             options.addArguments("--headless");
-            WebDriverManager.chromedriver().setup();
+            System.setProperty("webdriver.chrome.driver", "webdrivers/linux/chromedriver");
+        } else {
+            System.setProperty("webdriver.chrome.driver", "webdrivers/macos/chromedriver");
         }
-
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--disable-gpu");
