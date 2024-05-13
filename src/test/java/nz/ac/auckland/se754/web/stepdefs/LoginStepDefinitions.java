@@ -26,7 +26,6 @@ public class LoginStepDefinitions {
         if (System.getenv().getOrDefault("headless", "false").equals("true")) {
             options.addArguments("--headless");
             System.setProperty("webdriver.chrome.driver", "webdrivers/linux/chromedriver");
-            // WebDriverManager.chromedriver().setup();
         } else {
             System.setProperty("webdriver.chrome.driver", "webdrivers/macos/chromedriver");
         }
@@ -48,7 +47,7 @@ public class LoginStepDefinitions {
         // to make the test at human speed
         if (System.getenv().getOrDefault("headless", "false").equals("false")) {
             try {
-                Thread.sleep(2100);
+                Thread.sleep(2000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
