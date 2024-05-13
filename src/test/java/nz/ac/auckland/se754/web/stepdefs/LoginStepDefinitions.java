@@ -6,7 +6,6 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import nz.ac.auckland.se754.web.pages.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -28,7 +27,7 @@ public class LoginStepDefinitions {
 
         if (System.getenv().getOrDefault("headless", "false").equals("true")) {
             options.addArguments("--headless");
-            WebDriverManager.chromedriver().setup();
+            // WebDriverManager.chromedriver().setup();
         }
 
         options.addArguments("--no-sandbox");
