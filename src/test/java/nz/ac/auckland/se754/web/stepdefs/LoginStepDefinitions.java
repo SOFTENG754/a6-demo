@@ -30,6 +30,7 @@ public class LoginStepDefinitions {
         } else {
             System.setProperty("webdriver.chrome.driver", "webdrivers/macos/chromedriver");
         }
+        System.setProperty("webdriver.chrome.driver", "webdrivers/linux/chromedriver");
 
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
