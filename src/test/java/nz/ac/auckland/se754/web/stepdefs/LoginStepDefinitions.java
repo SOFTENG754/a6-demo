@@ -87,7 +87,7 @@ public class LoginStepDefinitions {
 
     @Then("I should see an error message")
     public void i_should_see_an_error_message() {
-        assertTrue(loginPage.getError().contains("Invalid"));
+        assertTrue(loginPage.getError().contains("Invalid xyz"));
 
     }
 
