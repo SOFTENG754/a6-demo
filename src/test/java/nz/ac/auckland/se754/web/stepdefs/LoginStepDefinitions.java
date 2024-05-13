@@ -85,4 +85,11 @@ public class LoginStepDefinitions {
         assertTrue(loginPage.getMessage().contains("Welcome user1"));
     }
 
+    @Then("I should see an error message")
+    public void i_should_see_an_error_message() {
+        assertTrue(loginPage.getError().contains("Invalid"));
+
+    }
+
+
 }
