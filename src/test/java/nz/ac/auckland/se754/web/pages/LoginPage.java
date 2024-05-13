@@ -24,6 +24,9 @@ public class LoginPage {
     @FindBy(how = How.ID, using = "message")
     private WebElement message;
 
+    @FindBy(how = How.XPATH, using = "/html/body/font")
+    private WebElement errorMessage;
+
     public void insertUserName(String userName) {
         this.userName.sendKeys(userName);
     }
@@ -38,6 +41,10 @@ public class LoginPage {
 
     public String getMessage() {
         return this.message.getText();
+    }
+
+    public String getError() {
+        return this.errorMessage.getText();
     }
 
 
