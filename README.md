@@ -2,11 +2,11 @@
 
 Demo SpringBoot + JSP + Cucumber + Selenium
 
-Requires Gradle 7.0
+Requires Gradle 7.3
 
 at `gradle/wrapper/gradle-wrapper.properties`
 you should have
-`distributionUrl=https\://services.gradle.org/distributions/gradle-7.0-all.zip`
+`distributionUrl=https\://services.gradle.org/distributions/gradle-7.3-all.zip`
 
 Tested with JDK 17
 
@@ -18,7 +18,7 @@ Headless means that run the Selenium driver without opening the browser, this is
 to run the web application
 `./gradlew bootRun`
 then go to http://localhost:8080/login
-username: test password:password
+username: user1 password:password
 
 to run the cucumber tests
 ` ./gradlew cucumber`
