@@ -22,13 +22,17 @@ public class LoginStepDefinitions {
     @Before
     public void setup() {
         ChromeOptions options = new ChromeOptions();
+        String osName = System.getProperty("os.name").toLowerCase();
 
         if (System.getenv().getOrDefault("headless", "false").equals("true")) {
             options.addArguments("--headless");
             System.setProperty("webdriver.chrome.driver", "webdrivers/linux/chromedriver");
-        } else {
+        } else if(osName.contains("mac")) {
             System.setProperty("webdriver.chrome.driver", "webdrivers/macos/chromedriver");
+        } else if(osName.contains("win")) {
+            System.setProperty("webdriver.chrome.driver", "webdrivers/win/chromedriver.exe");
         }
+
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--disable-gpu");
