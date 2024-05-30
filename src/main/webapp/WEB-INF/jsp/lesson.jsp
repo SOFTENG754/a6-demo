@@ -20,6 +20,18 @@
             }
             xhr.send("word=" + encodeURIComponent(word));
         }
+        function getExample() {
+            var word = document.getElementById("word").innerText;
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "${pageContext.request.contextPath}/lesson/getExample", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+                    document.getElementById("example").innerText = this.responseText;
+                }
+            }
+            xhr.send("word=" + encodeURIComponent(word));
+        }
     </script>
 </head>
 
@@ -33,6 +45,8 @@
 <p id="word">word</p>
 <button id="definitionButton" onclick="getDefinition()">Get Definition</button>
 <p id="definition">${definition}</p>
+<button id="exampleButton" onclick="getExample()">Get Example</button>
+<p id="example">${example}</p>
 </body>
 
 </html>

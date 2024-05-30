@@ -27,4 +27,15 @@ public class LessonController {
         String definition = wordManager.retrieveDefinition(word);
         return definition;
     }
+
+    @RequestMapping(value="/lesson/getExample", method = RequestMethod.POST)
+    @ResponseBody
+    public String getExample(@RequestParam("word") String word) {
+        WordLibrary wordLibrary = Mockito.mock(WordLibrary.class);
+        Mockito.when(wordLibrary.getExamples("valid word")).thenReturn(new String[]{"valid example", "another valid example"});
+        WordManager wordManager = new WordManager(wordLibrary);
+        String[] examples = (String[]) wordManager.retrieveExamples(word);
+        String firstExample = examples[0];
+        return firstExample;
+    }
 }
