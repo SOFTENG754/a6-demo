@@ -51,7 +51,7 @@ public class LoginStepDefinitions {
         // to make the test at human speed
         if (System.getenv().getOrDefault("headless", "false").equals("false")) {
             try {
-                Thread.sleep(2000);
+                Thread.sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

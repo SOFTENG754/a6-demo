@@ -27,6 +27,8 @@ public class LoginController {
 
 		Database mockDB = Mockito.mock(Database.class);
 		Mockito.when(mockDB.getPassword("user1")).thenReturn(password);
+		Mockito.when(mockDB.getPassword("newUser")).thenReturn(password);
+		Mockito.when(mockDB.getPassword("returnUser")).thenReturn(password);
 		Login service = new Login(mockDB);
 		boolean isValidUser = service.validateUser(name, password);
 		

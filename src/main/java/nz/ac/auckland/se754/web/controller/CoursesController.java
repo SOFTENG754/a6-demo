@@ -1,11 +1,14 @@
 package nz.ac.auckland.se754.web.controller;
 
+import nz.ac.auckland.se754.web.model.CourseItem;
 import nz.ac.auckland.se754.web.model.Item;
+import nz.ac.auckland.se754.web.service.Courses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import nz.ac.auckland.se754.web.service.Questions;
@@ -18,14 +21,20 @@ import java.util.List;
 public class CoursesController {
 	
 	@Autowired
-	Questions service;
+	Courses service;
 	
 	@RequestMapping(value="/courses", method = RequestMethod.GET)
 	public ModelAndView showQuestions(ModelMap model){
 		String name = (String) model.get("name");
-		List<Item> itemList = service.retrieveQuestions(name);
+		List<CourseItem> itemList = service.retrieveCourses(name);
 		ModelAndView map = new ModelAndView("/courses");
-		map.addObject("lists", itemList);
+		map.addObject("courselists", itemList);
 		return map;
+	}
+
+	@RequestMapping(value="/courses/toggleInterest", method = RequestMethod.POST)
+	public String toggleInterest(@RequestParam("id") int id) {
+		service.toggleInterest(id);
+		return "redirect:/courses";
 	}
 }
