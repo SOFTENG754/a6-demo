@@ -29,3 +29,9 @@ Feature: vocab definitions
     And The word has synonyms and antonyms
     When I click on the synonyms and antonyms button
     Then I should see the synonyms and antonyms of the word
+
+  Scenario: user wants to view synonyms and antonyms of an invalid word
+    Given I am in a lesson
+    And The word does not have any synonyms or antonyms
+    When I click on the synonyms and antonyms button
+    Then I should see an alert message pop-up saying unable to find any synonyms or antonyms
