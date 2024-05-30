@@ -12,6 +12,8 @@
            ID ${entry.id} <br/>
            name ${entry.name} <br/>
     </c:forEach>
+    <a href="${pageContext.request.contextPath}/course/1">Go to Course 1</a>
+
 </body>
 
 </html>

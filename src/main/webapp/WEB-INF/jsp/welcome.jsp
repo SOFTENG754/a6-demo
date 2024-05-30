@@ -6,7 +6,7 @@
 
 <body>
 <p> SE754 Dev Web App! </p>
-<label id="message">Welcome ${name}! <a href="/list-mcq">Click here</a> to see your language quiz.</label>
+<label id="message">Welcome ${name}! <a href="/courses">Click here</a> to see your language quiz.</label>
 
 </body>
 
