@@ -35,3 +35,9 @@ Feature: vocab definitions
     And The word does not have any synonyms or antonyms
     When I click on the synonyms and antonyms button
     Then I should see an alert message pop-up saying unable to find any synonyms or antonyms
+
+  Scenario: user wants information on a word during server connection failure
+    Given I am in a lesson
+    And The server is down
+    When I click on the definition button
+    Then I should see an alert message pop-up saying connection error

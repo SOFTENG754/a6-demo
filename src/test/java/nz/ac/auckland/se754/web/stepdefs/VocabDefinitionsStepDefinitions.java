@@ -107,6 +107,12 @@ public class VocabDefinitionsStepDefinitions {
         lessonPage.insertWord(word);
     }
 
+    @Given("The server is down")
+    public void the_server_is_down() {
+        word = "server down";
+        lessonPage.insertWord(word);
+    }
+
     @When("I click on the definition button")
     public void i_click_on_the_definition_button() {
         lessonPage.clickDefinitionButton();
@@ -169,6 +175,13 @@ public class VocabDefinitionsStepDefinitions {
     public void i_should_see_an_alert_message_pop_up_saying_unable_to_find_any_synonyms_or_antonyms() {
         String alertText = lessonPage.getAlertText();
         String expectedAlertText = "Unable to find any synonyms or antonyms";
+        assertEquals(alertText, expectedAlertText);
+    }
+
+    @Then("I should see an alert message pop-up saying connection error")
+    public void i_should_see_an_alert_message_pop_up_saying_connection_error() {
+        String alertText = lessonPage.getAlertText();
+        String expectedAlertText = "Connection error";
         assertEquals(alertText, expectedAlertText);
     }
 }
