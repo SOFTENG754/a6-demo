@@ -100,7 +100,7 @@ public class CourseProgressStepDefinitions {
 
     @When("I selected a new course")
     public void iSelectedANewCourse() {
-        coursePage.selectCourse();
+        coursePage.selectCourseOne();
     }
 
     @Then("I should be directed to the course page")
