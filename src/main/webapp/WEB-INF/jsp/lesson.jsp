@@ -11,7 +11,11 @@
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             xhr.onreadystatechange = function() {
                 if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-                    document.getElementById("definition").innerText = this.responseText;
+                    if (this.responseText === "Unable to find definition") {
+                        alert("Unable to find definition");
+                    } else {
+                        document.getElementById("definition").innerText = this.responseText;
+                    }
                 }
             }
             xhr.send("word=" + encodeURIComponent(word));
