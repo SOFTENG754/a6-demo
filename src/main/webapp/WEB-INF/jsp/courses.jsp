@@ -7,7 +7,7 @@
 
 <body>
 	<BR/>
-	${name}, the questions are :
+	${name}, the courses are :
 	 <c:forEach items="${lists}" var="entry">
            ID ${entry.id} <br/>
            name ${entry.name} <br/>

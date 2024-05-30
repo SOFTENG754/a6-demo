@@ -6,6 +6,7 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import nz.ac.auckland.se754.web.pages.CoursesPage;
 import nz.ac.auckland.se754.web.pages.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -15,9 +16,12 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class LoginStepDefinitions {
+public class CourseTrackingStepDefinitions{
     private WebDriver driver;
+    private CoursesPage coursesPage;
     private LoginPage loginPage;
+    private String userName;
+    private String password;
 
     @Before
     public void setup() {
@@ -43,7 +47,9 @@ public class LoginStepDefinitions {
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(45, TimeUnit.SECONDS);
+        coursesPage = new CoursesPage(driver);
         loginPage = new LoginPage(driver);
+
     }
 
     @AfterStep
@@ -63,37 +69,27 @@ public class LoginStepDefinitions {
         driver.quit();
     }
 
-    @Given("I visit the login page")
-    public void i_visit_the_login_page() {
-        driver.get("http://localhost:8080/login");
-
+    @Given("I am new to the site")
+    public void i_am_new_to_the_site() {
+        userName = "newUser";
+        password = "password";
     }
 
-    @When("I enter {string} as user name field")
-    public void i_enter_as_user_name_field(String string) {
-        loginPage.insertUserName(string);
-    }
-
-    @When("I enter {string} as password field")
-    public void i_enter_as_password_field(String string) {
-        loginPage.insertPassword(string);
-    }
-
-    @When("I press the submit button")
-    public void i_press_the_submit_button() {
+    @Given("I am logged in")
+    public void i_am_logged_in() {
+        loginPage.insertUserName(userName);
+        loginPage.insertPassword(password);
         loginPage.clickLogin();
     }
 
-    @Then("I should see the welcome page")
-    public void i_should_see_the_welcome_page() {
-        assertTrue(loginPage.getMessage().contains("Welcome user1"));
+    @When("I visit the courses page")
+    public void i_visit_the_courses_page() {
+        driver.get("http://localhost:8080/courses");
     }
 
-    @Then("I should see an error message")
-    public void i_should_see_an_error_message() {
-        assertTrue(loginPage.getError().contains("Invalid Credentials"));
-
+    @Then("I should see a list of courses with no tags")
+    public void i_should_see_a_list_of_courses_with_no_tags() {
+        assertTrue(coursesPage.getCourses().size() > 0);
+        assertTrue(coursesPage.getCourseTags().isEmpty());
     }
-
-
 }
