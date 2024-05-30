@@ -36,6 +36,18 @@
             }
             xhr.send("word=" + encodeURIComponent(word));
         }
+        function getSynonymsAndAntonyms() {
+            var word = document.getElementById("word").innerText;
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "${pageContext.request.contextPath}/lesson/getSynonymsAndAntonyms", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+                    document.getElementById("synonymsAndAntonyms").innerText = this.responseText;
+                }
+            }
+            xhr.send("word=" + encodeURIComponent(word));
+        }
     </script>
 </head>
 
@@ -46,11 +58,13 @@
 
 <p>Welcome to the lesson page.</p>
 <a href="${pageContext.request.contextPath}/course/${courseid}">Back to Course</a>
-<p id="word">word</p>
+<p id="word">valid word</p>
 <button id="definitionButton" onclick="getDefinition()">Get Definition</button>
 <p id="definition">${definition}</p>
 <button id="exampleButton" onclick="getExample()">Get Example</button>
 <p id="example">${example}</p>
+<button id="synonymsAndAntonymsButton" onclick="getSynonymsAndAntonyms()">Get Synonyms And Antonyms</button>
+<p id="synonymsAndAntonyms">${synonymsAndAntonyms}</p>
 </body>
 
 </html>

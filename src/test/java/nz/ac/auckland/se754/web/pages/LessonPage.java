@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class LessonPage {
@@ -58,9 +59,10 @@ public class LessonPage {
         synonymsAndAntonymsButton.click();
     }
 
-    public String[] getSynonymsAndAntonyms() {
+    public ArrayList<String> getSynonymsAndAntonyms() {
         String synonymsAndAntonymsText = synonymsAndAntonyms.getText();
-        return synonymsAndAntonymsText.split(", ");
+        List<String> synonymsAndAntonymsList = Arrays.asList(synonymsAndAntonymsText.replace("\"", "").replace("[","").replace("]","").split(","));
+        return new ArrayList<>(synonymsAndAntonymsList);
     }
 
     public void insertWord(String word) {

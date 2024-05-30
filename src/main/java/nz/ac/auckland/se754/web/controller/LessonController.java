@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
+
 @Controller
 public class LessonController {
 
@@ -37,5 +39,17 @@ public class LessonController {
         WordManager wordManager = new WordManager(wordLibrary);
         String[] examples = (String[]) wordManager.retrieveExamples(word);
         return examples[0];
+    }
+
+    @RequestMapping(value="/lesson/getSynonymsAndAntonyms", method = RequestMethod.POST)
+    @ResponseBody
+    public ArrayList<String> getSynonymsAndAntonyms(@RequestParam("word") String word) {
+        WordLibrary wordLibrary = Mockito.mock(WordLibrary.class);
+        Mockito.when(wordLibrary.getSynonyms("valid word")).thenReturn(new String[]{"synonym1", "synonym2"});
+        Mockito.when(wordLibrary.getAntonyms("valid word")).thenReturn(new String[]{"antonym1", "antonym2"});
+        Mockito.when(wordLibrary.getSynonyms("invalid word")).thenReturn(null);
+        Mockito.when(wordLibrary.getAntonyms("invalid word")).thenReturn(null);
+        WordManager wordManager = new WordManager(wordLibrary);
+        return (ArrayList<String>) wordManager.retrieveSynonymsAndAntonyms(word);
     }
 }

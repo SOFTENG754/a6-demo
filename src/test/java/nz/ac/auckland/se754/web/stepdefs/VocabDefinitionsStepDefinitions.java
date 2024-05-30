@@ -11,6 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -147,8 +148,14 @@ public class VocabDefinitionsStepDefinitions {
 
     @Then("I should see the synonyms and antonyms of the word")
     public void i_should_see_the_synonyms_and_antonyms_of_the_word() {
-        String[] synonymsAndAntonyms = lessonPage.getSynonymsAndAntonyms();
-        String[] expectedSynonymsAndAntonyms = {"Synonyms: ", "synonym1", "synonym2", "Antonyms: ", "antonym1", "antonym2"};
+        ArrayList<String> synonymsAndAntonyms = lessonPage.getSynonymsAndAntonyms();
+        ArrayList<String> expectedSynonymsAndAntonyms = new ArrayList<>();
+        expectedSynonymsAndAntonyms.add("Synonyms: ");
+        expectedSynonymsAndAntonyms.add("synonym1");
+        expectedSynonymsAndAntonyms.add("synonym2");
+        expectedSynonymsAndAntonyms.add("Antonyms: ");
+        expectedSynonymsAndAntonyms.add("antonym1");
+        expectedSynonymsAndAntonyms.add("antonym2");
         assertEquals(synonymsAndAntonyms, expectedSynonymsAndAntonyms);
     }
 }
