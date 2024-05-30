@@ -13,6 +13,8 @@
                 if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
                     if (this.responseText === "Unable to find definition") {
                         alert("Unable to find definition");
+                    }else if (this.responseText === "Connection error") {
+                        alert("Connection error");
                     } else {
                         document.getElementById("definition").innerText = this.responseText;
                     }
@@ -29,6 +31,8 @@
                 if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
                     if (this.responseText === "Unable to find any examples") {
                         alert("Unable to find any examples");
+                    }else if (this.responseText === "Connection error") {
+                        alert("Connection error");
                     } else {
                         document.getElementById("example").innerText = this.responseText;
                     }
@@ -45,6 +49,8 @@
                 if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
                     if (this.responseText === "Unable to find any synonyms or antonyms") {
                         alert("Unable to find any synonyms or antonyms");
+                    }else if (this.responseText === "Connection error") {
+                        alert("Connection error");
                     } else {
                         document.getElementById("synonymsAndAntonyms").innerText = this.responseText;
                     }

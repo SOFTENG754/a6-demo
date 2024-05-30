@@ -25,6 +25,7 @@ public class LessonController {
     public String getDefinition(@RequestParam("word") String word) {
         WordLibrary wordLibrary = Mockito.mock(WordLibrary.class);
         Mockito.when(wordLibrary.getDefinition("valid word")).thenReturn("valid definition");
+        Mockito.when(wordLibrary.getDefinition("server down")).thenThrow(new RuntimeException());
         WordManager wordManager = new WordManager(wordLibrary);
         String definition = wordManager.retrieveDefinition(word);
         return definition;
@@ -36,6 +37,7 @@ public class LessonController {
         WordLibrary wordLibrary = Mockito.mock(WordLibrary.class);
         Mockito.when(wordLibrary.getExamples("valid word")).thenReturn(new String[]{"valid example", "another valid example"});
         Mockito.when(wordLibrary.getExamples("invalid word")).thenReturn(new String[]{"Unable to find any examples"});
+        Mockito.when(wordLibrary.getExamples("server down")).thenThrow(new RuntimeException());
         WordManager wordManager = new WordManager(wordLibrary);
         String[] examples = (String[]) wordManager.retrieveExamples(word);
         return examples[0];
@@ -49,6 +51,8 @@ public class LessonController {
         Mockito.when(wordLibrary.getAntonyms("valid word")).thenReturn(new String[]{"antonym1", "antonym2"});
         Mockito.when(wordLibrary.getSynonyms("invalid word")).thenReturn(null);
         Mockito.when(wordLibrary.getAntonyms("invalid word")).thenReturn(null);
+        Mockito.when(wordLibrary.getSynonyms("server down")).thenThrow(new RuntimeException());
+        Mockito.when(wordLibrary.getAntonyms("server down")).thenThrow(new RuntimeException());
         WordManager wordManager = new WordManager(wordLibrary);
         return wordManager.retrieveSynonymsAndAntonyms(word);
     }
