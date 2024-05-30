@@ -88,6 +88,12 @@ public class VocabDefinitionsStepDefinitions {
         lessonPage.insertWord(word);
     }
 
+    @Given("The word does not have any examples")
+    public void the_word_does_not_have_any_examples() {
+        word = "invalid word";
+        lessonPage.insertWord(word);
+    }
+
     @When("I click on the definition button")
     public void i_click_on_the_definition_button() {
         lessonPage.clickDefinitionButton();
@@ -119,5 +125,12 @@ public class VocabDefinitionsStepDefinitions {
         String expectedExpected = "valid example";
         assertEquals(example, expectedExpected);
 
+    }
+
+    @Then("I should see an alert message pop-up saying unable to find any examples")
+    public void i_should_see_an_alert_message_pop_up_saying_unable_to_find_any_examples() {
+        String alertText = lessonPage.getAlertText();
+        String expectedAlertText = "Unable to find any examples";
+        assertEquals(alertText, expectedAlertText);
     }
 }
