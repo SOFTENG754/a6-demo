@@ -33,9 +33,9 @@ public class LessonController {
     public String getExample(@RequestParam("word") String word) {
         WordLibrary wordLibrary = Mockito.mock(WordLibrary.class);
         Mockito.when(wordLibrary.getExamples("valid word")).thenReturn(new String[]{"valid example", "another valid example"});
+        Mockito.when(wordLibrary.getExamples("invalid word")).thenReturn(new String[]{"Unable to find any examples"});
         WordManager wordManager = new WordManager(wordLibrary);
         String[] examples = (String[]) wordManager.retrieveExamples(word);
-        String firstExample = examples[0];
-        return firstExample;
+        return examples[0];
     }
 }
