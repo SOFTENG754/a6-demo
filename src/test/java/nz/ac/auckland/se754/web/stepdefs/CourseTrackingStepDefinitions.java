@@ -81,7 +81,7 @@ public class CourseTrackingStepDefinitions{
 
     @Given("I am a returning user")
     public void i_am_a_returning_user() {
-        userName = "user1";
+        userName = "returnUser";
         password = "password";
     }
 

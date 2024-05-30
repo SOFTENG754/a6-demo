@@ -21,20 +21,17 @@ public class Courses {
         items = new ArrayList<>();
         courses2user = new HashMap<>();
         Course course1 = new Course(new Lesson[]{new Lesson()});
-        //course1.getTagsForCourse().setInterested(false);
         Course course2 = new Course(new Lesson[]{new Lesson()});
-        //course2.getTagsForCourse().setInterested(false);
         Course course3 = new Course(new Lesson[]{new Lesson()});
-        //course3.getTagsForCourse().setInterested(false);
         Course course4 = new Course(new Lesson[]{new Lesson()});
-        //course4.getTagsForCourse().setInterested(false);
+        Course course5 = new Course(new Lesson[]{new Lesson()});
         items.add(new CourseItem(1, "Course1", course1, "", "Not Started"));
         items.add(new CourseItem(2, "Course2", course2, "", "Not Started"));
-        items.add(new CourseItem(3, "Course3", course3, "", "Not Started"));
-        items.add(new CourseItem(4, "Course4", course4, "", "Not Started"));
+        items.add(new CourseItem(3, "Course3", course3, "Interested", "Not Started"));
+        items.add(new CourseItem(4, "Course4", course4, "", "In Progress"));
+        items.add(new CourseItem(5, "Course5", course5, "Interested", "Completed"));
         courses2user.put("newUser", Arrays.asList(items.get(0), items.get(1)));
-        courses2user.put("user1", Arrays.asList(items.get(2)));
-        courses2user.put("user2", Arrays.asList(items.get(3)));
+        courses2user.put("returnUser", Arrays.asList(items.get(2), items.get(3), items.get(4)));
     }
 
     public List<CourseItem> retrieveCourses(String user) {
