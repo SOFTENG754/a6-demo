@@ -103,6 +103,11 @@ public class CourseTrackingStepDefinitions{
         coursesPage.clickInterestButton(1);
     }
 
+    @When("I click the interested button for a course tagged as interested")
+    public void i_click_the_interested_button_for_a_course_tagged_as_interested() {
+        coursesPage.clickInterestButton(0);
+    }
+
 
     @Then("I should see a list of courses with no tags")
     public void i_should_see_a_list_of_courses_with_no_tags() {
@@ -144,6 +149,17 @@ public class CourseTrackingStepDefinitions{
         assertTrue(coursesPage.getCourses().size() > 0);
         ArrayList<String> interestTags = coursesPage.getInterestTags();
         ArrayList<String> expectedInterestTags = new ArrayList<>();
+        expectedInterestTags.add("");
+        expectedInterestTags.add("Interested");
+        assertEquals(expectedInterestTags, interestTags);
+    }
+
+    @Then("I should see the courses tag removed")
+    public void i_should_see_the_courses_tag_removed() {
+        assertTrue(coursesPage.getCourses().size() > 0);
+        ArrayList<String> interestTags = coursesPage.getInterestTags();
+        ArrayList<String> expectedInterestTags = new ArrayList<>();
+        expectedInterestTags.add("");
         expectedInterestTags.add("");
         expectedInterestTags.add("Interested");
         assertEquals(expectedInterestTags, interestTags);
