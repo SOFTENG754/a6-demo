@@ -43,7 +43,11 @@
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             xhr.onreadystatechange = function() {
                 if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-                    document.getElementById("synonymsAndAntonyms").innerText = this.responseText;
+                    if (this.responseText === "Unable to find any synonyms or antonyms") {
+                        alert("Unable to find any synonyms or antonyms");
+                    } else {
+                        document.getElementById("synonymsAndAntonyms").innerText = this.responseText;
+                    }
                 }
             }
             xhr.send("word=" + encodeURIComponent(word));

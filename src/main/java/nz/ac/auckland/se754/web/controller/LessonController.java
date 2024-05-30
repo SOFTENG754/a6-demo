@@ -43,13 +43,13 @@ public class LessonController {
 
     @RequestMapping(value="/lesson/getSynonymsAndAntonyms", method = RequestMethod.POST)
     @ResponseBody
-    public ArrayList<String> getSynonymsAndAntonyms(@RequestParam("word") String word) {
+    public Object getSynonymsAndAntonyms(@RequestParam("word") String word) {
         WordLibrary wordLibrary = Mockito.mock(WordLibrary.class);
         Mockito.when(wordLibrary.getSynonyms("valid word")).thenReturn(new String[]{"synonym1", "synonym2"});
         Mockito.when(wordLibrary.getAntonyms("valid word")).thenReturn(new String[]{"antonym1", "antonym2"});
         Mockito.when(wordLibrary.getSynonyms("invalid word")).thenReturn(null);
         Mockito.when(wordLibrary.getAntonyms("invalid word")).thenReturn(null);
         WordManager wordManager = new WordManager(wordLibrary);
-        return (ArrayList<String>) wordManager.retrieveSynonymsAndAntonyms(word);
+        return wordManager.retrieveSynonymsAndAntonyms(word);
     }
 }
