@@ -1,7 +1,7 @@
 package nz.ac.auckland.se754.web.backend.model;
 
-import nz.ac.auckland.exception.InvalidCourseProgressException;
-import nz.ac.auckland.exception.NoLessonException;
+import nz.ac.auckland.se754.web.backend.exception.InvalidCourseProgressException;
+import nz.ac.auckland.se754.web.backend.exception.NoLessonException;
 
 public class CourseProgress {
     User user;

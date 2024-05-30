@@ -1,8 +1,8 @@
 package nz.ac.auckland.se754.web.backend.model;
 
-import nz.ac.auckland.exception.NoUserFoundException;
-import nz.ac.auckland.exception.PrivateProgressException;
-import nz.ac.auckland.manager.LearningProgressManager;
+import nz.ac.auckland.se754.web.backend.exception.NoUserFoundException;
+import nz.ac.auckland.se754.web.backend.exception.PrivateProgressException;
+import nz.ac.auckland.se754.web.backend.manager.LearningProgressManager;
 
 import java.util.ArrayList;
 
@@ -30,7 +30,7 @@ public class User {
     }
 
     public ArrayList<CourseTags> getCourseTags(){
-        ArrayList<CourseTags> interestedCourses = new ArrayList<CourseTags>();
+        ArrayList<CourseTags> interestedCourses = new ArrayList<>();
         if (courses != null) {
             for (Course course : courses) {
                 CourseTags courseTags = course.getTagsForCourse();
@@ -43,7 +43,7 @@ public class User {
     }
 
     public ArrayList<CourseTags> getInProgressCourses(){
-        ArrayList<CourseTags> inProgressCourses = new ArrayList<CourseTags>();
+        ArrayList<CourseTags> inProgressCourses = new ArrayList<>();
         if (courses != null) {
             for (Course course : courses) {
                 CourseTags courseTags = course.getTagsForCourse();

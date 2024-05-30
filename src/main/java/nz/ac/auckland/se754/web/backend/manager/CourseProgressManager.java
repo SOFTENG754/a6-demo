@@ -1,16 +1,16 @@
 package nz.ac.auckland.se754.web.backend.manager;
 
-import nz.ac.auckland.exception.NoLessonException;
-import nz.ac.auckland.model.Course;
-import nz.ac.auckland.model.CourseProgress;
-import nz.ac.auckland.model.User;
+import nz.ac.auckland.se754.web.backend.exception.NoLessonException;
+import nz.ac.auckland.se754.web.backend.model.Course;
+import nz.ac.auckland.se754.web.backend.model.CourseProgress;
+import nz.ac.auckland.se754.web.backend.model.User;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
 public class CourseProgressManager {
-    private Map<UserCoursePair, CourseProgress> progressMap;
+    private final Map<UserCoursePair, CourseProgress> progressMap;
 
     public CourseProgressManager() {
         progressMap = new HashMap<>();
@@ -42,7 +42,7 @@ class UserCoursePair{
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || !(o instanceof UserCoursePair that)) return false;
+        if (!(o instanceof UserCoursePair that)) return false;
         return user.equals(that.user) && course.equals(that.course);
     }
 

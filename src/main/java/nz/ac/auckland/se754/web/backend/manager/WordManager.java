@@ -1,8 +1,10 @@
 package nz.ac.auckland.se754.web.backend.manager;
 
-import nz.ac.auckland.model.WordLibrary;
+import nz.ac.auckland.se754.web.backend.model.WordLibrary;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Objects;
 
 public class WordManager {
     private WordLibrary wordLibrary;
@@ -14,10 +16,7 @@ public class WordManager {
     public String retrieveDefinition(String word) {
         try {
             String definition = wordLibrary.getDefinition(word);
-            if (definition == null) {
-                return "Unable to find definition";
-            }
-            return definition;
+            return Objects.requireNonNullElse(definition, "Unable to find definition");
         } catch (RuntimeException e) {
             return "Connection error";
         }
@@ -45,15 +44,11 @@ public class WordManager {
             }
             if (synonyms != null) {
                 relatedWords.add("Synonyms: ");
-                for (String synonym : synonyms) {
-                    relatedWords.add(synonym);
-                }
+                relatedWords.addAll(Arrays.asList(synonyms));
             }
             if (antonyms != null) {
                 relatedWords.add("Antonyms: ");
-                for (String antonym : antonyms) {
-                    relatedWords.add(antonym);
-                }
+                relatedWords.addAll(Arrays.asList(antonyms));
             }
             return relatedWords;
         } catch (RuntimeException e) {

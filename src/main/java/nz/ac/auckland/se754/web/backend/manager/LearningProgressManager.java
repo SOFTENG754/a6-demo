@@ -1,14 +1,14 @@
 package nz.ac.auckland.se754.web.backend.manager;
 
-import nz.ac.auckland.exception.NoUserFoundException;
-import nz.ac.auckland.exception.PrivateProgressException;
-import nz.ac.auckland.model.LearningProgress;
+import nz.ac.auckland.se754.web.backend.exception.NoUserFoundException;
+import nz.ac.auckland.se754.web.backend.exception.PrivateProgressException;
+import nz.ac.auckland.se754.web.backend.model.LearningProgress;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class LearningProgressManager {
-    private static Map<String, LearningProgress> userProgressMap = new HashMap<>();;
+    private static Map<String, LearningProgress> userProgressMap = new HashMap<>();
 
     public static LearningProgress getLearningProgress(String username) throws NoUserFoundException, PrivateProgressException {
         if(userProgressMap.containsKey(username)){
