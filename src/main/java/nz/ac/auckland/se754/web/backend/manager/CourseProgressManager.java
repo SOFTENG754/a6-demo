@@ -42,7 +42,7 @@ class UserCoursePair{
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof UserCoursePair that)) return false;
+        if (o == null || !(o instanceof UserCoursePair that)) return false;
         return user.equals(that.user) && course.equals(that.course);
     }
 
