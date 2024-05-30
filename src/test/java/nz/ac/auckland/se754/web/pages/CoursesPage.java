@@ -23,6 +23,9 @@ public class CoursesPage {
     @FindBy(how = How.CSS, using = ".progress-tag")
     private List<WebElement> progressTags;
 
+    @FindBy(how = How.CSS, using = ".interestButton")
+    private List<WebElement> interestButtons;
+
     public List<WebElement> getCourses() {
         return courses;
     }
@@ -41,5 +44,9 @@ public class CoursesPage {
             courseTags.add(tag.getText());
         }
         return courseTags;
+    }
+
+    public void clickInterestButton(int index) {
+        interestButtons.get(index).click();
     }
 }

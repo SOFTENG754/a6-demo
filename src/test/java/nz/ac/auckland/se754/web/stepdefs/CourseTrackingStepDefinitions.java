@@ -98,6 +98,12 @@ public class CourseTrackingStepDefinitions{
         driver.get("http://localhost:8080/courses");
     }
 
+    @When("I click the interested button for a course not tagged as interested")
+    public void i_click_the_interested_button_for_a_course_not_tagged_as_interested() {
+        coursesPage.clickInterestButton(1);
+    }
+
+
     @Then("I should see a list of courses with no tags")
     public void i_should_see_a_list_of_courses_with_no_tags() {
         assertTrue(coursesPage.getCourses().size() > 0);
@@ -131,5 +137,15 @@ public class CourseTrackingStepDefinitions{
         expectedProgressTags.add("In Progress");
         expectedProgressTags.add("Completed");
         assertEquals(expectedProgressTags, progressTags);
+    }
+
+    @Then("I should see the course tagged as interested")
+    public void i_should_see_the_course_tagged_as_interested() {
+        assertTrue(coursesPage.getCourses().size() > 0);
+        ArrayList<String> interestTags = coursesPage.getInterestTags();
+        ArrayList<String> expectedInterestTags = new ArrayList<>();
+        expectedInterestTags.add("");
+        expectedInterestTags.add("Interested");
+        assertEquals(expectedInterestTags, interestTags);
     }
 }

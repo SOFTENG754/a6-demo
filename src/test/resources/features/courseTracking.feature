@@ -12,3 +12,10 @@ Feature: courseTracking
     When I visit the courses page
     Then I should see the courses I have tagged as interested
     And I should see the courses progress tagged
+
+  Scenario: user wants to tag a course as interested
+    Given I am new to the site
+    And I am logged in
+    When I visit the courses page
+    And I click the interested button for a course not tagged as interested
+    Then I should see the course tagged as interested
