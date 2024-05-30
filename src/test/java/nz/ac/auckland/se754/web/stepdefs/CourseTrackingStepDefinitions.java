@@ -61,7 +61,7 @@ public class CourseTrackingStepDefinitions{
         // to make the test at human speed
         if (System.getenv().getOrDefault("headless", "false").equals("false")) {
             try {
-                Thread.sleep(500);
+                Thread.sleep(2000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
