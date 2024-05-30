@@ -3,6 +3,7 @@ package nz.ac.auckland.se754.web.stepdefs;
 import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
+import io.cucumber.java.bs.A;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -78,6 +79,12 @@ public class CourseTrackingStepDefinitions{
         password = "password";
     }
 
+    @Given("I am a returning user")
+    public void i_am_a_returning_user() {
+        userName = "user1";
+        password = "password";
+    }
+
     @Given("I am logged in")
     public void i_am_logged_in() {
         driver.get("http://localhost:8080/login");
@@ -102,5 +109,27 @@ public class CourseTrackingStepDefinitions{
         for (String tag : progressTags) {
             assertEquals("Not Started", tag);
         }
+    }
+
+    @Then("I should see the courses I have tagged as interested")
+    public void i_should_see_the_courses_I_have_tagged_as_interested() {
+        assertTrue(coursesPage.getCourses().size() > 0);
+        ArrayList<String> interestTags = coursesPage.getInterestTags();
+        ArrayList<String> expectedInterestTags = new ArrayList<>();
+        expectedInterestTags.add("Interested");
+        expectedInterestTags.add("");
+        expectedInterestTags.add("Interested");
+        assertEquals(expectedInterestTags, interestTags);
+    }
+
+    @Then("I should see the courses progress tagged")
+    public void i_should_see_the_courses_progress_tagged() {
+        assertTrue(coursesPage.getCourses().size() > 0);
+        ArrayList<String> progressTags = coursesPage.getProgressTags();
+        ArrayList<String> expectedProgressTags = new ArrayList<>();
+        expectedProgressTags.add("Not Started");
+        expectedProgressTags.add("In Progress");
+        expectedProgressTags.add("Completed");
+        assertEquals(expectedProgressTags, progressTags);
     }
 }
