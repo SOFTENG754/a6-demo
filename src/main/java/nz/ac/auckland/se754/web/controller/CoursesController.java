@@ -1,6 +1,8 @@
 package nz.ac.auckland.se754.web.controller;
 
+import nz.ac.auckland.se754.web.model.CourseItem;
 import nz.ac.auckland.se754.web.model.Item;
+import nz.ac.auckland.se754.web.service.Courses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -18,14 +20,14 @@ import java.util.List;
 public class CoursesController {
 	
 	@Autowired
-	Questions service;
+	Courses service;
 	
 	@RequestMapping(value="/courses", method = RequestMethod.GET)
 	public ModelAndView showQuestions(ModelMap model){
 		String name = (String) model.get("name");
-		List<Item> itemList = service.retrieveQuestions(name);
+		List<CourseItem> itemList = service.retrieveCourses(name);
 		ModelAndView map = new ModelAndView("/courses");
-		map.addObject("lists", itemList);
+		map.addObject("courselists", itemList);
 		return map;
 	}
 }

@@ -8,9 +8,13 @@
 <body>
 	<BR/>
 	${name}, the courses are :
-	 <c:forEach items="${lists}" var="entry">
+	 <c:forEach items="${courselists}" var="entry">
+        <div class="course-item">
            ID ${entry.id} <br/>
            name ${entry.name} <br/>
+           <div class="interest-tag"></div>
+           <div class="progress-tag">Not Started</div>
+        </div>
     </c:forEach>
     <a href="${pageContext.request.contextPath}/course/1">Go to Course 1</a>
 

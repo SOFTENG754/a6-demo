@@ -17,16 +17,27 @@ public class CoursesPage {
     @FindBy(how = How.CSS, using = ".course-item")
     private List<WebElement> courses;
 
-    @FindBy(how = How.CSS, using = ".course-tag")
-    private List<WebElement> tags;
+    @FindBy(how = How.CSS, using = ".interest-tag")
+    private List<WebElement> interestTags;
+
+    @FindBy(how = How.CSS, using = ".progress-tag")
+    private List<WebElement> progressTags;
 
     public List<WebElement> getCourses() {
         return courses;
     }
 
-    public ArrayList<String> getCourseTags() {
+    public ArrayList<String> getInterestTags() {
         ArrayList<String> courseTags = new ArrayList<>();
-        for (WebElement tag : tags) {
+        for (WebElement tag : interestTags) {
+            courseTags.add(tag.getText());
+        }
+        return courseTags;
+    }
+
+    public ArrayList<String> getProgressTags() {
+        ArrayList<String> courseTags = new ArrayList<>();
+        for (WebElement tag : progressTags) {
             courseTags.add(tag.getText());
         }
         return courseTags;

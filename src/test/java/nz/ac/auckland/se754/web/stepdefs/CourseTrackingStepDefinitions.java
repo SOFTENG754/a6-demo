@@ -12,8 +12,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.util.ArrayList;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CourseTrackingStepDefinitions{
@@ -77,6 +80,7 @@ public class CourseTrackingStepDefinitions{
 
     @Given("I am logged in")
     public void i_am_logged_in() {
+        driver.get("http://localhost:8080/login");
         loginPage.insertUserName(userName);
         loginPage.insertPassword(password);
         loginPage.clickLogin();
@@ -90,6 +94,13 @@ public class CourseTrackingStepDefinitions{
     @Then("I should see a list of courses with no tags")
     public void i_should_see_a_list_of_courses_with_no_tags() {
         assertTrue(coursesPage.getCourses().size() > 0);
-        assertTrue(coursesPage.getCourseTags().isEmpty());
+        ArrayList<String> interestTags = coursesPage.getInterestTags();
+        ArrayList<String> progressTags = coursesPage.getProgressTags();
+        for (String tag : interestTags) {
+            assertEquals("", tag);
+        }
+        for (String tag : progressTags) {
+            assertEquals("Not Started", tag);
+        }
     }
 }
