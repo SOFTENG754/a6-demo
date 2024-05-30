@@ -26,12 +26,27 @@ public class LessonPage {
     @FindBy(how = How.ID, using = "definition")
     private WebElement definition;
 
+    @FindBy(how = How.ID, using = "exampleButton")
+    private WebElement exampleButton;
+
+    @FindBy(how = How.ID, using = "example")
+    private WebElement example;
+
+
     public void clickDefinitionButton() {
         definitionButton.click();
     }
 
     public String getDefinition() {
         return definition.getText();
+    }
+
+    public void clickExampleButton() {
+        exampleButton.click();
+    }
+
+    public String getExample() {
+        return example.getText();
     }
 
     public void insertWord(String word) {

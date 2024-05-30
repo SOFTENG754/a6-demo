@@ -82,9 +82,20 @@ public class VocabDefinitionsStepDefinitions {
         lessonPage.insertWord(word);
     }
 
+    @Given("The word has an example")
+    public void the_word_has_an_example() {
+        word = "valid word";
+        lessonPage.insertWord(word);
+    }
+
     @When("I click on the definition button")
     public void i_click_on_the_definition_button() {
         lessonPage.clickDefinitionButton();
+    }
+
+    @When("I click on the example button")
+    public void i_click_on_the_example_button() {
+        lessonPage.clickExampleButton();
     }
 
     @Then("I should see the definition of the word")
@@ -100,5 +111,13 @@ public class VocabDefinitionsStepDefinitions {
         String alertText = lessonPage.getAlertText();
         String expectedAlertText = "Unable to find definition";
         assertEquals(alertText, expectedAlertText);
+    }
+
+    @Then("I should see the example of the word")
+    public void i_should_see_the_example_of_the_word() {
+        String example = lessonPage.getExample();
+        String expectedExpected = "valid example";
+        assertEquals(example, expectedExpected);
+
     }
 }

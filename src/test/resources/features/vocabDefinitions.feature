@@ -11,3 +11,9 @@ Feature: vocab definitions
     And The word does not have a definition
     When I click on the definition button
     Then I should see an alert message pop-up saying unable to find definition
+
+  Scenario: user wants to view context examples of a word
+    Given I am in a lesson
+    And The word has an example
+    When I click on the example button
+    Then I should see the example of the word
