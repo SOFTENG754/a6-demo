@@ -73,6 +73,7 @@ public class VocabDefinitionsStepDefinitions {
     @Given("The word has a definition")
     public void the_word_has_a_definition() {
         word = "valid word";
+        lessonPage.insertWord(word);
     }
 
     @When("I click on the definition button")
