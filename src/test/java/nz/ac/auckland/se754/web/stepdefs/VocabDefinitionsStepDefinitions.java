@@ -76,6 +76,12 @@ public class VocabDefinitionsStepDefinitions {
         lessonPage.insertWord(word);
     }
 
+    @Given("The word does not have a definition")
+    public void the_word_does_not_have_a_definition() {
+        word = "invalid word";
+        lessonPage.insertWord(word);
+    }
+
     @When("I click on the definition button")
     public void i_click_on_the_definition_button() {
         lessonPage.clickDefinitionButton();
@@ -87,5 +93,12 @@ public class VocabDefinitionsStepDefinitions {
         String expectedDefinition = "valid definition";
         assertEquals(definition, expectedDefinition);
 
+    }
+
+    @Then("I should see an alert message pop-up saying unable to find definition")
+    public void i_should_see_an_alert_message_pop_up_saying_unable_to_find_definition() {
+        String alertText = lessonPage.getAlertText();
+        String expectedAlertText = "Unable to find definition";
+        assertEquals(alertText, expectedAlertText);
     }
 }
