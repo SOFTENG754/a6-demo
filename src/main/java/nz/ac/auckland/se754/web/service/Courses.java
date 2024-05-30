@@ -44,6 +44,10 @@ public class Courses {
 
     public void toggleInterest(int id) {
         CourseItem courseItem = items.get(id-1);
+        if (courseItem.getInterest().equals("Interested")) {
+            courseItem.setInterest("");
+            return;
+        }
         courseItem.setInterest("Interested");
     }
 }
