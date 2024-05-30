@@ -15,16 +15,16 @@ import java.util.List;
 
 @Controller
 @SessionAttributes("name")
-public class MCQController {
+public class CoursesController {
 	
 	@Autowired
 	Questions service;
 	
-	@RequestMapping(value="/list-mcq", method = RequestMethod.GET)
+	@RequestMapping(value="/courses", method = RequestMethod.GET)
 	public ModelAndView showQuestions(ModelMap model){
 		String name = (String) model.get("name");
 		List<Item> itemList = service.retrieveQuestions(name);
-		ModelAndView map = new ModelAndView("/list-mcq");
+		ModelAndView map = new ModelAndView("/courses");
 		map.addObject("lists", itemList);
 		return map;
 	}
