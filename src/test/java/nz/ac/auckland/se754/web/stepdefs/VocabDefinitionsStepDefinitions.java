@@ -54,7 +54,7 @@ public class VocabDefinitionsStepDefinitions {
         // to make the test at human speed
         if (System.getenv().getOrDefault("headless", "false").equals("false")) {
             try {
-                Thread.sleep(200);
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
