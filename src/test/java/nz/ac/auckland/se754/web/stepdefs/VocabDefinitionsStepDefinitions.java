@@ -94,6 +94,12 @@ public class VocabDefinitionsStepDefinitions {
         lessonPage.insertWord(word);
     }
 
+    @Given("The word has synonyms and antonyms")
+    public void the_word_has_synonyms_and_antonyms() {
+        word = "valid word";
+        lessonPage.insertWord(word);
+    }
+
     @When("I click on the definition button")
     public void i_click_on_the_definition_button() {
         lessonPage.clickDefinitionButton();
@@ -102,6 +108,11 @@ public class VocabDefinitionsStepDefinitions {
     @When("I click on the example button")
     public void i_click_on_the_example_button() {
         lessonPage.clickExampleButton();
+    }
+
+    @When("I click on the synonyms and antonyms button")
+    public void i_click_on_the_synonyms_and_antonyms_button() {
+        lessonPage.clickSynonymsAndAntonymsButton();
     }
 
     @Then("I should see the definition of the word")
@@ -132,5 +143,12 @@ public class VocabDefinitionsStepDefinitions {
         String alertText = lessonPage.getAlertText();
         String expectedAlertText = "Unable to find any examples";
         assertEquals(alertText, expectedAlertText);
+    }
+
+    @Then("I should see the synonyms and antonyms of the word")
+    public void i_should_see_the_synonyms_and_antonyms_of_the_word() {
+        String[] synonymsAndAntonyms = lessonPage.getSynonymsAndAntonyms();
+        String[] expectedSynonymsAndAntonyms = {"Synonyms: ", "synonym1", "synonym2", "Antonyms: ", "antonym1", "antonym2"};
+        assertEquals(synonymsAndAntonyms, expectedSynonymsAndAntonyms);
     }
 }

@@ -32,6 +32,11 @@ public class LessonPage {
     @FindBy(how = How.ID, using = "example")
     private WebElement example;
 
+    @FindBy(how = How.ID, using = "synonymsAndAntonymsButton")
+    private WebElement synonymsAndAntonymsButton;
+
+    @FindBy(how = How.ID, using = "synonymsAndAntonyms")
+    private WebElement synonymsAndAntonyms;
 
     public void clickDefinitionButton() {
         definitionButton.click();
@@ -47,6 +52,15 @@ public class LessonPage {
 
     public String getExample() {
         return example.getText();
+    }
+
+    public void clickSynonymsAndAntonymsButton() {
+        synonymsAndAntonymsButton.click();
+    }
+
+    public String[] getSynonymsAndAntonyms() {
+        String synonymsAndAntonymsText = synonymsAndAntonyms.getText();
+        return synonymsAndAntonymsText.split(", ");
     }
 
     public void insertWord(String word) {

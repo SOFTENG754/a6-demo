@@ -23,3 +23,9 @@ Feature: vocab definitions
     And The word does not have any examples
     When I click on the example button
     Then I should see an alert message pop-up saying unable to find any examples
+
+  Scenario: user wants to view synonyms and antonyms of a word
+    Given I am in a lesson
+    And The word has synonyms and antonyms
+    When I click on the synonyms and antonyms button
+    Then I should see the synonyms and antonyms of the word
