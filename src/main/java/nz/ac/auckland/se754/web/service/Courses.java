@@ -41,4 +41,9 @@ public class Courses {
         }
         return filteredItems;
     }
+
+    public void toggleInterest(int id) {
+        CourseItem courseItem = items.get(id-1);
+        courseItem.setInterest("Interested");
+    }
 }
