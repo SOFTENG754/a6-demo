@@ -3,6 +3,7 @@ package nz.ac.auckland.se754.web.stepdefs;
 import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
+import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -24,8 +25,7 @@ public class CourseProgressStepDefinitions {
     CoursesPage coursesPage;
     CoursePage coursePage;
     LoginPage loginPage;
-    String userName;
-    String password;
+    String expectedProgressString;
 
     @Before
     public void setup() {
@@ -83,5 +83,17 @@ public class CourseProgressStepDefinitions {
         String progressString = coursePage.getProgress();
         String expectedString = "0/2";
         assertEquals(expectedString, progressString);
+    }
+
+    @When("I select a course with {numberOfLessons} lessons which I have completed {lessonCompleted} lessons")
+    public void iSelectACourseWithNumberOfLessonsLessonsWhichIHaveCompletedLessonCompletedLessons(int numberOfLessons, int lessonCompleted) {
+        driver.get("http://localhost:8080/courses/2?numberOfLessons=" + numberOfLessons + "&lessonCompleted=" + lessonCompleted);
+    }
+
+    @Then("I should see my progress for this course to be {progress}")
+    public void iShouldSeeMyProgressForThisCourseToBeProgress(String progress) {
+        String progressString = coursePage.getProgress();
+        expectedProgressString = progress;
+        assertEquals(expectedProgressString, progressString);
     }
 }
