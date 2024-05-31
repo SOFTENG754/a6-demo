@@ -88,28 +88,28 @@ public class VocabDefinitionsStepDefinitions {
     public void i_should_see_the_definition_of_the_word() {
         String definition = lessonPage.getDefinition();
         String expectedDefinition = "valid definition";
-        assertEquals(definition, expectedDefinition);
+        assertEquals(expectedDefinition, definition);
     }
 
     @Then("I should see an alert message pop-up saying unable to find definition")
     public void i_should_see_an_alert_message_pop_up_saying_unable_to_find_definition() {
         String alertText = lessonPage.getAlertText();
         String expectedAlertText = "Unable to find definition";
-        assertEquals(alertText, expectedAlertText);
+        assertEquals(expectedAlertText, alertText);
     }
 
     @Then("I should see the example of the word")
     public void i_should_see_the_example_of_the_word() {
         String example = lessonPage.getExample();
         String expectedExpected = "valid example";
-        assertEquals(example, expectedExpected);
+        assertEquals(expectedExpected, example);
     }
 
     @Then("I should see an alert message pop-up saying unable to find any examples")
     public void i_should_see_an_alert_message_pop_up_saying_unable_to_find_any_examples() {
         String alertText = lessonPage.getAlertText();
         String expectedAlertText = "Unable to find any examples";
-        assertEquals(alertText, expectedAlertText);
+        assertEquals(expectedAlertText, alertText);
     }
 
     @Then("I should see the synonyms and antonyms of the word")
@@ -122,20 +122,20 @@ public class VocabDefinitionsStepDefinitions {
         expectedSynonymsAndAntonyms.add("Antonyms: ");
         expectedSynonymsAndAntonyms.add("antonym1");
         expectedSynonymsAndAntonyms.add("antonym2");
-        assertEquals(synonymsAndAntonyms, expectedSynonymsAndAntonyms);
+        assertEquals(expectedSynonymsAndAntonyms, synonymsAndAntonyms);
     }
 
     @Then("I should see an alert message pop-up saying unable to find any synonyms or antonyms")
     public void i_should_see_an_alert_message_pop_up_saying_unable_to_find_any_synonyms_or_antonyms() {
         String alertText = lessonPage.getAlertText();
         String expectedAlertText = "Unable to find any synonyms or antonyms";
-        assertEquals(alertText, expectedAlertText);
+        assertEquals(expectedAlertText, alertText);
     }
 
     @Then("I should see an alert message pop-up saying connection error")
     public void i_should_see_an_alert_message_pop_up_saying_connection_error() {
         String alertText = lessonPage.getAlertText();
         String expectedAlertText = "Connection error";
-        assertEquals(alertText, expectedAlertText);
+        assertEquals(expectedAlertText, alertText);
     }
 }
