@@ -1,8 +1,10 @@
-package nz.ac.auckland.se754.web.backend.model;
+package nz.ac.auckland.se754.web.model;
 
 import nz.ac.auckland.se754.web.backend.exception.NoUserFoundException;
 import nz.ac.auckland.se754.web.backend.exception.PrivateProgressException;
-import nz.ac.auckland.se754.web.backend.manager.LearningProgressManager;
+import nz.ac.auckland.se754.web.service.LearningProgressManager;
+import nz.ac.auckland.se754.web.backend.model.Course;
+import nz.ac.auckland.se754.web.backend.model.CourseTags;
 
 import java.util.ArrayList;
 

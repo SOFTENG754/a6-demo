@@ -10,11 +10,9 @@ import nz.ac.auckland.se754.web.backend.exception.InvalidCourseProgressException
 import nz.ac.auckland.se754.web.backend.exception.NoLessonException;
 import nz.ac.auckland.se754.web.backend.model.Course;
 import nz.ac.auckland.se754.web.backend.model.Lesson;
-import nz.ac.auckland.se754.web.backend.model.Task;
-import nz.ac.auckland.se754.web.backend.model.User;
+import nz.ac.auckland.se754.web.model.User;
 import nz.ac.auckland.se754.web.model.CourseItem;
 import nz.ac.auckland.se754.web.model.CourseProgress;
-import nz.ac.auckland.se754.web.model.Item;
 import org.springframework.stereotype.Service;
 
 @Service
