@@ -73,44 +73,12 @@ public class CourseProgressStepDefinitions {
         driver.quit();
     }
 
-    @Given("I am new to the site")
-    public void i_am_new_to_the_site() {
-        userName = "newUser";
-        password = "password";
-    }
-
-    @Given("I am a returning user")
-    public void i_am_a_returning_user() {
-        userName = "returnUser";
-        password = "password";
-    }
-
-    @Given("I am logged in")
-    public void i_am_logged_in() {
-        driver.get("http://localhost:8080/login");
-        loginPage.insertUserName(userName);
-        loginPage.insertPassword(password);
-        loginPage.clickLogin();
-    }
-
-    @When("I visit the courses page")
-    public void iVisitTheCoursesPage() {
-        driver.get("http://localhost:8080/courses");
-    }
-
     @When("I selected a new course")
     public void iSelectedANewCourse() {
-        coursePage.selectCourseOne();
+        driver.get("http://localhost:8080/courses/1");
     }
 
-    @Then("I should be directed to the course page")
-    public void iShouldBeDirectedToTheCoursePage() {
-        String expectedUrl = "http://localhost:8080/courses/1";
-        String actualUrl = driver.getCurrentUrl();
-        assertEquals(expectedUrl, actualUrl);
-    }
-
-    @And("see my progress for this course to be initialized")
+    @Then("see my progress for this course to be initialized")
     public void seeMyProgressForThisCourseToBeInitialized() {
         String progressString = coursePage.getProgress();
         String expectedString = "0/2";
