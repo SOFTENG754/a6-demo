@@ -3,6 +3,7 @@ package nz.ac.auckland.se754.web.stepdefs;
 import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -97,5 +98,22 @@ public class ProgressComparisonStepDefinitions {
         String myProgress = progressPage.getMyProgress();
         String expectedProgress = "0 course completed";
         assertEquals(expectedProgress, myProgress);
+    }
+
+    @Given("I have visited the application before")
+    public void iHaveVisitedTheApplicationBefore() {
+        userName = "returnUser";
+        password = "password";
+    }
+
+    @Given("I have completed {int} courses")
+    public void iHaveCompletedCourseCompletedCourses(int courseCompleted) {
+        // backend related, nothing to test for frontend
+    }
+
+    @Then("I should see my learning progress is {string}")
+    public void iShouldSeeMyLearningProgressIsLearningProgress(String learningProgress) {
+        String myProgress = progressPage.getMyProgress();
+        assertEquals(learningProgress, myProgress);
     }
 }
