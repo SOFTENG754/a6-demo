@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class User {
     LearningProgress learningProgress;
-    String username;
+    public String username;
     Course[] courses;
 
     public User(String username){

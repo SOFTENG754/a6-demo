@@ -6,6 +6,7 @@
 </head>
 
 <body>
+
 	<BR/>
 	${name}, the courses are :
 	 <c:forEach items="${courselists}" var="entry">
@@ -18,10 +19,16 @@
                 <input type="hidden" name="id" value="${entry.id}">
                 <input type="submit" value="Toggle Interest" class="interestButton">
             </form>
+
         </div>
     </c:forEach>
-    <a href="${pageContext.request.contextPath}/course/1">Go to Course 1</a>
 
+    <a href="${pageContext.request.contextPath}/courses/1" class="course-link">
+        <button>Go to Course 1</button>
+    </a>
+    <a href="${pageContext.request.contextPath}/courses/2" class="course-link">
+        <button>Go to Course 2</button>
+    </a>
 </body>
 
 </html>

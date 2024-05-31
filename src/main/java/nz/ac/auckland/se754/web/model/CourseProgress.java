@@ -1,15 +1,20 @@
-package nz.ac.auckland.se754.web.backend.model;
+package nz.ac.auckland.se754.web.model;
 
 import nz.ac.auckland.se754.web.backend.exception.InvalidCourseProgressException;
 import nz.ac.auckland.se754.web.backend.exception.NoLessonException;
+import nz.ac.auckland.se754.web.backend.model.Course;
+import nz.ac.auckland.se754.web.backend.model.User;
 
 public class CourseProgress {
     User user;
+    String username;
     Course course;
+    CourseItem courseItem;
     int progress;
-    public CourseProgress(User user, Course course){
+    public CourseProgress(User user, CourseItem courseItem){
         this.user = user;
-        this.course = course;
+        this.courseItem = courseItem;
+        this.course = courseItem.getCourse();
     }
 
     public void startProgress() throws NoLessonException {
@@ -19,15 +24,16 @@ public class CourseProgress {
         progress = 0;
     }
 
+    public CourseItem getCourseItem(){return courseItem;};
     public int getProgress(){return progress;}
 
     public void updateProgress() throws InvalidCourseProgressException {
         if (progress < course.getLessons().length) {
             progress++;
-            user.getLearningProgress().updateNumberOfCompletedLessons();
-            if(course.getLessons().length == progress){
-                user.getLearningProgress().updateNumberOfCompletedCourse();
-            }
+//            user.getLearningProgress().updateNumberOfCompletedLessons();
+//            if(course.getLessons().length == progress){
+//                user.getLearningProgress().updateNumberOfCompletedCourse();
+//            }
         } else{
             throw new InvalidCourseProgressException();
         }

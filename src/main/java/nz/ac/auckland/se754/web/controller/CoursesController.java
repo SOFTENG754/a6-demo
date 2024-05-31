@@ -1,15 +1,15 @@
 package nz.ac.auckland.se754.web.controller;
 
+import nz.ac.auckland.se754.web.backend.exception.InvalidCourseProgressException;
 import nz.ac.auckland.se754.web.model.CourseItem;
+import nz.ac.auckland.se754.web.model.CourseProgress;
 import nz.ac.auckland.se754.web.model.Item;
 import nz.ac.auckland.se754.web.service.Courses;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 
 import nz.ac.auckland.se754.web.service.Questions;
 import org.springframework.web.servlet.ModelAndView;
@@ -36,5 +36,18 @@ public class CoursesController {
 	public String toggleInterest(@RequestParam("id") int id) {
 		service.toggleInterest(id);
 		return "redirect:/courses";
+	}
+
+	@RequestMapping(value="/courses/{courseNumber}", method = RequestMethod.GET)
+	public String goToCourse(@PathVariable("courseNumber") int courseNumber, ModelMap model) throws InvalidCourseProgressException {
+		String name = (String) model.get("name");
+		CourseProgress courseProgress = service.retrieveUserProgress(name, courseNumber);
+//		CourseProgress courseProgress = Mockito.mock(CourseProgress.class);
+//		Mockito.when(courseProgress.getProgress()).thenReturn(0);
+		String progress = courseProgress.getProgress() + "/" + courseProgress.getCourseItem().getCourse().getLessons().length;
+
+		model.put("courseid", courseNumber);
+		model.put("progress", progress);
+		return "course";
 	}
 }
