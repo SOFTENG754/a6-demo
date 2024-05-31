@@ -28,9 +28,8 @@ Feature: Compare Learning Progress
     Then I should see an error message indicating that I do not have access to the learning progress
 
   Scenario: see other user's progress with valid username
-    Given I have visited the application before
+    Given I am a new user to the application
     And I just logged in
     And I navigate to the progress page
-    When I search for another user's username which exists
-    And the user's status is set to private
+    When I search for another user which exists but set status to private
     Then I should see an error message indicating that I do not have access to the learning progress
