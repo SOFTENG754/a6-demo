@@ -1,3 +1,4 @@
+@login
 Feature: login
 
   Scenario: login

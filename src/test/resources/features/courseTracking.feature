@@ -1,3 +1,4 @@
+@courseTracking
 Feature: courseTracking
 
   Scenario: new user views courses

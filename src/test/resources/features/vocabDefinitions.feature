@@ -1,4 +1,5 @@
-Feature: vocab definitions
+@vocabDefinitions
+Feature: vocabDefinitions
 
   Scenario: user wants to view the definition of a word
     Given I am in a lesson
