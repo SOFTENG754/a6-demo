@@ -15,12 +15,8 @@ public class User {
 
     public User(String username){
         this.username = username;
-        LearningProgressManager.startLearningProgress(this.username);
-        try {
-            learningProgress = LearningProgressManager.getLearningProgress(this.username);
-        } catch (NoUserFoundException | PrivateProgressException e) {
-            throw new RuntimeException(e);
-        }
+        this.learningProgress = new LearningProgress();
+        LearningProgressManager.startLearningProgress(this.username, learningProgress);
     }
 
     public void setCourses(Course[] courses){

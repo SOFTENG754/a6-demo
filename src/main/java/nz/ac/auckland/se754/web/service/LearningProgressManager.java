@@ -13,9 +13,7 @@ public class LearningProgressManager {
 
     public static void initialize(User newUser, User returnUser){
 
-        startLearningProgress(newUser.username);
-        startLearningProgress(returnUser.username);
-
+        returnUser.getLearningProgress().setPrivate(true);
         returnUser.getLearningProgress().updateNumberOfCompletedCourse();
         returnUser.getLearningProgress().updateNumberOfCompletedCourse();
         returnUser.getLearningProgress().updateNumberOfCompletedCourse();
@@ -25,6 +23,7 @@ public class LearningProgressManager {
     public static LearningProgress getLearningProgress(String username) throws NoUserFoundException, PrivateProgressException {
         if(userProgressMap.containsKey(username)){
             LearningProgress learningProgress = userProgressMap.get(username);
+            System.out.println(learningProgress.getIsPrivate());
             if(learningProgress.getIsPrivate()){
                 throw new PrivateProgressException();
             }
@@ -34,7 +33,7 @@ public class LearningProgressManager {
         }
     }
 
-    public static void startLearningProgress(String username){
-        userProgressMap.put(username, new LearningProgress());
+    public static void startLearningProgress(String username, LearningProgress learningProgress){
+        userProgressMap.put(username, learningProgress);
     }
 }
