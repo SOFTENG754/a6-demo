@@ -87,6 +87,7 @@ public class CourseProgressStepDefinitions {
 
     @When("I select course {int} which I have completed {int} lessons")
     public void iSelectACourseWhichIHaveCompletedLessonCompletedLessons(int courseNumber, int lessonCompleted) {
+        driver.get("http://localhost:8080/courses/" + courseNumber);
     }
     @Then("I should see my progress for this course to be {string}")
     public void iShouldSeeMyProgressForThisCourseToBeProgress(String progress) {
