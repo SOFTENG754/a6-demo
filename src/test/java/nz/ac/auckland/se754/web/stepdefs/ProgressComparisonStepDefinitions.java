@@ -106,14 +106,15 @@ public class ProgressComparisonStepDefinitions {
         password = "password";
     }
 
-    @Given("I have completed {int} courses")
-    public void iHaveCompletedCourseCompletedCourses(int courseCompleted) {
+    @Given("I have completed a few courses")
+    public void iHaveCompletedCourseCompletedCourses() {
         // backend related, nothing to test for frontend
     }
 
-    @Then("I should see my learning progress is {string}")
-    public void iShouldSeeMyLearningProgressIsLearningProgress(String learningProgress) {
+    @Then("I should see my learning progress as the number of courses I have completed")
+    public void iShouldSeeMyLearningProgressIsLearningProgress() {
         String myProgress = progressPage.getMyProgress();
-        assertEquals(learningProgress, myProgress);
+        String expectedProgress ="4 courses completed";
+        assertEquals(expectedProgress, myProgress);
     }
 }

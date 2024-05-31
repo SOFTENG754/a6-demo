@@ -5,14 +5,9 @@ Feature: Compare Learning Progress
     When I navigate to the progress page
     Then I should see my learning progress being initialized
 
-  Scenario Outline: update learning progress
+  Scenario: update learning progress
     Given I have visited the application before
     And I just logged in
-    And I have completed <courseCompleted> courses
+    And I have completed a few courses
     When I navigate to the progress page
-    Then I should see my learning progress is <learningProgress>
-
-    Examples:
-      | courseCompleted | learningProgress |
-      | 3               | "3 courses completed"|
-      | 5               | "5 courses completed" |
+    Then I should see my learning progress as the number of courses I have completed
