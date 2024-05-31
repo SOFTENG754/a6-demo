@@ -16,6 +16,9 @@
 </form>
 
 <p id="other-user-progress">${otherProgress}</p>
+<c:if test="${notFoundOrPrivate}">
+    <p id="error">The user you searched is not found or has set their status to private.</p>
+</c:if>
 </body>
 
 </html>

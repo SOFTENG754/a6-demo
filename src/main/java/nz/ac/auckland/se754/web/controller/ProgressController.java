@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import javax.servlet.http.HttpSession;
@@ -39,9 +40,18 @@ public class ProgressController {
     }
 
     @RequestMapping(value="/progress", method = RequestMethod.POST)
-    public String showProgressPage(ModelMap model) throws NoUserFoundException, PrivateProgressException {
-        String otherProgress = String.valueOf(LearningProgressManager.getLearningProgress("newUser").getNumberOfCompletedCourses()) + " course completed" ;
-        model.put("otherProgress", otherProgress);
+    public String showProgressPage(@RequestParam String username, ModelMap model) throws NoUserFoundException, PrivateProgressException {
+        boolean notFoundOrPrivate = false;
+
+        String otherProgress ="";
+        try{
+            otherProgress = LearningProgressManager.getLearningProgress(username).getNumberOfCompletedCourses() + " course completed";
+            model.put("otherProgress", otherProgress);
+        }catch (PrivateProgressException | NoUserFoundException e){
+            notFoundOrPrivate = true;
+        }
+
+        model.addAttribute("notFoundOrPrivate", notFoundOrPrivate);
         return "progress";
     }
 }
