@@ -19,3 +19,10 @@ Feature: Compare Learning Progress
     When I search for another user's username which exists
     And that user's learning progress is public
     Then I should see their learning progress
+
+  Scenario: see other user's progress with invalid username
+    Given I have visited the application before
+    And I just logged in
+    And I navigate to the progress page
+    When I search for another user's username which does not exist
+    Then I should see an error message indicating that I do not have access to the learning progress
