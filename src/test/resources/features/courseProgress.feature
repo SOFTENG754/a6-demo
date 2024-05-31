@@ -10,12 +10,12 @@ Feature: course progress
     Given I am a returning user
     And I am logged in
     And I visit the courses page
-    When  I select a course with <numberOfLessons> lessons which I have completed <lessonCompleted> lessons
+    When  I select course <courseNumber> which I have completed <lessonCompleted> lessons
     Then I should see my progress for this course to be <progress>
 
     Examples:
-      | numberOfLessons | lessonCompleted | progress |
-      | 2               |1                |"1/2"     |
-      | 2               |2                |"2/2"     |
-      | 3               |2                |"2/3"     |
+     |courseNumber | lessonCompleted | progress |
+     |2            |1                |"1/2"     |
+     |3            |2                |"2/3"     |
+     |4            |3                |"3/4"     |
 

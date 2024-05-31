@@ -85,15 +85,14 @@ public class CourseProgressStepDefinitions {
         assertEquals(expectedString, progressString);
     }
 
-    @When("I select a course with {numberOfLessons} lessons which I have completed {lessonCompleted} lessons")
-    public void iSelectACourseWithNumberOfLessonsLessonsWhichIHaveCompletedLessonCompletedLessons(int numberOfLessons, int lessonCompleted) {
-        driver.get("http://localhost:8080/courses/2?numberOfLessons=" + numberOfLessons + "&lessonCompleted=" + lessonCompleted);
+    @When("I select course {int} which I have completed {int} lessons")
+    public void iSelectACourseWhichIHaveCompletedLessonCompletedLessons(int courseNumber, int lessonCompleted) {
     }
-
-    @Then("I should see my progress for this course to be {progress}")
+    @Then("I should see my progress for this course to be {string}")
     public void iShouldSeeMyProgressForThisCourseToBeProgress(String progress) {
         String progressString = coursePage.getProgress();
         expectedProgressString = progress;
         assertEquals(expectedProgressString, progressString);
     }
+
 }
