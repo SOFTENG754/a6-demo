@@ -57,6 +57,14 @@ public class ChromeWebDriverManager {
                 e.printStackTrace();
             }
         }
+        // for headless CI we can use a shorter sleep
+        else {
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @After
