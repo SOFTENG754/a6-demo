@@ -50,7 +50,7 @@ public class CourseProgressStepDefinitions {
 
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(45, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         coursesPage = new CoursesPage(driver);
         loginPage = new LoginPage(driver);
         coursePage = new CoursePage(driver);

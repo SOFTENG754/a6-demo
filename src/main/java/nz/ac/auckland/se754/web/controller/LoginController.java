@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import nz.ac.auckland.se754.web.service.Login;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @SessionAttributes("name")
 public class LoginController {
@@ -23,7 +25,7 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value="/login", method = RequestMethod.POST)
-	public String showWelcomePage(ModelMap model, @RequestParam String name, @RequestParam String password){
+	public String showWelcomePage(ModelMap model, @RequestParam String name, @RequestParam String password, HttpSession session){
 
 		Database mockDB = Mockito.mock(Database.class);
 		Mockito.when(mockDB.getPassword("user1")).thenReturn(password);
@@ -36,10 +38,11 @@ public class LoginController {
 			model.put("errorMessage", "Invalid Credentials");
 			return "login";
 		}
-		
+
+		model.addAttribute("name", name);
 		model.put("name", name);
 		model.put("password", password);
-		
+		session.setAttribute("name", name);
 		return "welcome";
 	}
 
