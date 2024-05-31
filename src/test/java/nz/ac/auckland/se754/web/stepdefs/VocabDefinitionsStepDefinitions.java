@@ -86,6 +86,12 @@ public class VocabDefinitionsStepDefinitions {
 
     @Then("I should see the definition of the word")
     public void i_should_see_the_definition_of_the_word() {
+        // @todo this is a workaround to fix getDefinition not getting any result
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         String definition = lessonPage.getDefinition();
         String expectedDefinition = "valid definition";
         assertEquals(expectedDefinition, definition);
