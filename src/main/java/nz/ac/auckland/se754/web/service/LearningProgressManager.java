@@ -11,11 +11,15 @@ import java.util.Map;
 public class LearningProgressManager {
     private static Map<String, LearningProgress> userProgressMap = new HashMap<>();
 
-    public static void initialize(){
-        User newUser = new User("newUser");
-        User returnUser = new User("returnUser");
+    public static void initialize(User newUser, User returnUser){
+
         startLearningProgress(newUser.username);
         startLearningProgress(returnUser.username);
+
+        returnUser.getLearningProgress().updateNumberOfCompletedCourse();
+        returnUser.getLearningProgress().updateNumberOfCompletedCourse();
+        returnUser.getLearningProgress().updateNumberOfCompletedCourse();
+        returnUser.getLearningProgress().updateNumberOfCompletedCourse();
     }
 
     public static LearningProgress getLearningProgress(String username) throws NoUserFoundException, PrivateProgressException {
