@@ -17,7 +17,25 @@ public class ProgressPage {
     @FindBy(how = How.ID, using = "my-progress")
     private WebElement myProgress;
 
+    @FindBy(how = How.ID, using = "username-input")
+    private WebElement usernameInput;
+
+    @FindBy(how = How.ID, using = "submit-button")
+    private WebElement submitButton;
+
+    @FindBy(how = How.ID, using = "other-user-progress")
+    private WebElement otherUserProgress;
+
     public String getMyProgress() {
         return myProgress.getText();
+    }
+
+    public void search(String username) {
+        usernameInput.sendKeys(username);
+        submitButton.click();
+    }
+
+    public String getOtherUserProgress(){
+        return otherUserProgress.getText();
     }
 }

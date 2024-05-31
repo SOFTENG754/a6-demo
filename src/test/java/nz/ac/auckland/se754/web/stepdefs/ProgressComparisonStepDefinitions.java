@@ -117,4 +117,21 @@ public class ProgressComparisonStepDefinitions {
         String expectedProgress ="4 courses completed";
         assertEquals(expectedProgress, myProgress);
     }
+
+    @When("I search for another user's username which exists")
+    public void iSearchForAnotherUserSUsernameWhichExists() {
+        progressPage.search("newUser");
+    }
+
+    @When("that user's learning progress is public")
+    public void thatUserSLearningProgressIsPublic() {
+        // backend code, not related to frontend testing
+    }
+
+    @Then("I should see their learning progress")
+    public void iShouldSeeTheirLearningProgress() {
+        String otherUserProgress = progressPage.getOtherUserProgress();
+        String expectedProgress ="0 course completed";
+        assertEquals(expectedProgress, otherUserProgress);
+    }
 }
