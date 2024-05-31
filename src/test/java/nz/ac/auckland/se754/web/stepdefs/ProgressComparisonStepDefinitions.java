@@ -140,10 +140,17 @@ public class ProgressComparisonStepDefinitions {
         progressPage.search("randomUser");
     }
 
+    @When("I search for another user which exists but set status to private")
+    public void iSearchForAnotherUserWhichExistsButSetStatusToPrivate() {
+        progressPage.search("returnUser");
+    }
+
     @Then("I should see an error message indicating that I do not have access to the learning progress")
     public void iShouldSeeAnErrorMessageIndicatingThatIDoNotHaveAccessToTheLearningProgress() {
         String error = progressPage.getError();
         String expectedError = "The user you searched is not found or has set their status to private.";
         assertEquals(expectedError, error);
     }
+
+
 }
