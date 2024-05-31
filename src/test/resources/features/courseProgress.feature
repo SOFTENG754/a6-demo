@@ -1,4 +1,6 @@
-Feature: course progress
+@courseProgress
+Feature: courseProgress
+
   Scenario: initialize course progress
     Given I am a new user
     And I am logged in to the application
