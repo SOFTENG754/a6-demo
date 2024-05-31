@@ -37,4 +37,9 @@ public class CoursesController {
 		service.toggleInterest(id);
 		return "redirect:/courses";
 	}
+
+	@RequestMapping(value="/courses/1", method = RequestMethod.GET)
+	public String goToCourseOne(ModelMap model) {
+		return "course";
+	}
 }
