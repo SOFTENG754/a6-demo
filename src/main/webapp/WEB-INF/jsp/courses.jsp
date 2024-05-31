@@ -6,9 +6,7 @@
 </head>
 
 <body>
-    <form action="${pageContext.request.contextPath}/courses/1" method="get">
-        <input type="submit" value="Go to Course 1" id="course-button">
-    </form>
+
 	<BR/>
 	${name}, the courses are :
 	 <c:forEach items="${courselists}" var="entry">
@@ -25,7 +23,12 @@
         </div>
     </c:forEach>
 
-
+    <a href="${pageContext.request.contextPath}/courses/1" class="course-link">
+        <button>Go to Course 1</button>
+    </a>
+    <a href="${pageContext.request.contextPath}/courses/2" class="course-link">
+        <button>Go to Course 2</button>
+    </a>
 </body>
 
 </html>

@@ -6,10 +6,7 @@ import nz.ac.auckland.se754.web.service.Courses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 
 import nz.ac.auckland.se754.web.service.Questions;
 import org.springframework.web.servlet.ModelAndView;
@@ -38,8 +35,28 @@ public class CoursesController {
 		return "redirect:/courses";
 	}
 
-	@RequestMapping(value="/courses/1", method = RequestMethod.GET)
-	public String goToCourseOne(ModelMap model) {
+	@RequestMapping(value="/courses/{courseNumber}", method = RequestMethod.GET)
+	public String goToCourse(@PathVariable("courseNumber") int courseNumber, ModelMap model) {
+		String progress = "";
+		switch (courseNumber){
+			case 1:
+				progress =  "0/2";
+				break;
+			case 2:
+				progress = "1/2";
+				break;
+			case 3:
+				progress = "2/3";
+				break;
+			case 4:
+				progress= "3/4";
+				break;
+			default: // Add a default case to handle other course IDs
+				progress = "N/A"; // Or any other default progress value
+				break;
+		}
+		model.addAttribute("courseid", courseNumber);
+		model.addAttribute("progress", progress);
 		return "course";
 	}
 }

@@ -8,7 +8,7 @@
 <body>
 <BR/>
 <h1>Course ID: ${courseid}</h1>
-<p id="course-one-progress">0/2</p>
+<p id="course-one-progress">${progress}</p>
 <a href="${pageContext.request.contextPath}/courses">Back to Courses</a>
 <a href="${pageContext.request.contextPath}/course/${courseid}/lesson/1">Go to lesson 1</a>
 </body>
