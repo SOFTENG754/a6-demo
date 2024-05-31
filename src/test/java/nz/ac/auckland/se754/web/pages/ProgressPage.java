@@ -26,6 +26,9 @@ public class ProgressPage {
     @FindBy(how = How.ID, using = "other-user-progress")
     private WebElement otherUserProgress;
 
+    @FindBy(how = How.ID, using = "error")
+    private WebElement error;
+
     public String getMyProgress() {
         return myProgress.getText();
     }
@@ -37,5 +40,9 @@ public class ProgressPage {
 
     public String getOtherUserProgress(){
         return otherUserProgress.getText();
+    }
+
+    public String getError() {
+        return error.getText();
     }
 }
