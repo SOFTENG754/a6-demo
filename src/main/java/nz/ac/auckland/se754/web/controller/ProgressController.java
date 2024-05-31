@@ -2,6 +2,7 @@ package nz.ac.auckland.se754.web.controller;
 
 import nz.ac.auckland.se754.web.backend.exception.NoUserFoundException;
 import nz.ac.auckland.se754.web.backend.exception.PrivateProgressException;
+import nz.ac.auckland.se754.web.model.LearningProgress;
 import nz.ac.auckland.se754.web.model.User;
 import nz.ac.auckland.se754.web.service.LearningProgressManager;
 import org.springframework.stereotype.Controller;
@@ -24,13 +25,23 @@ public class ProgressController {
         LearningProgressManager.initialize(newUser, returnUser);
         String name = (String) model.get("name");
         String ownProgress ="";
+
         if(Objects.equals(name, newUser.username)){
             ownProgress = newUser.getLearningProgress().getNumberOfCompletedCourses() + " course completed";
         }else{
             ownProgress = returnUser.getLearningProgress().getNumberOfCompletedCourses() + " courses completed";
+
         }
 
         model.put("ownProgress", ownProgress);
+
+        return "progress";
+    }
+
+    @RequestMapping(value="/progress", method = RequestMethod.POST)
+    public String showProgressPage(ModelMap model) throws NoUserFoundException, PrivateProgressException {
+        String otherProgress = String.valueOf(LearningProgressManager.getLearningProgress("newUser").getNumberOfCompletedCourses()) + " course completed" ;
+        model.put("otherProgress", otherProgress);
         return "progress";
     }
 }
