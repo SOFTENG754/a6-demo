@@ -29,6 +29,9 @@
     <a href="${pageContext.request.contextPath}/courses/2" class="course-link">
         <button>Go to Course 2</button>
     </a>
+    <a href="/progress" id="progress-link">
+        <button>Go to Progress Page</button>
+    </a>
 </body>
 
 </html>

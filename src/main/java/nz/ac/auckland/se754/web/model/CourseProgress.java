@@ -3,7 +3,6 @@ package nz.ac.auckland.se754.web.model;
 import nz.ac.auckland.se754.web.backend.exception.InvalidCourseProgressException;
 import nz.ac.auckland.se754.web.backend.exception.NoLessonException;
 import nz.ac.auckland.se754.web.backend.model.Course;
-import nz.ac.auckland.se754.web.backend.model.User;
 
 public class CourseProgress {
     User user;

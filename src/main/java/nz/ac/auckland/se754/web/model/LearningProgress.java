@@ -1,4 +1,4 @@
-package nz.ac.auckland.se754.web.backend.model;
+package nz.ac.auckland.se754.web.model;
 
 public class LearningProgress {
     private int numberOfCompletedLesson;
