@@ -26,6 +26,8 @@ public class CourseProgressStepDefinitions {
     CoursePage coursePage;
     LoginPage loginPage;
     String expectedProgressString;
+    String userName;
+    String password;
 
     @Before
     public void setup() {
@@ -73,6 +75,31 @@ public class CourseProgressStepDefinitions {
         driver.quit();
     }
 
+    @Given("I am a new user")
+    public void i_am_new_to_the_site() {
+        userName = "newUser";
+        password = "password";
+    }
+
+    @Given("I am returning user")
+    public void i_am_a_returning_user() {
+        userName = "returnUser";
+        password = "password";
+    }
+
+    @Given("I am logged in to the application")
+    public void i_am_logged_in() {
+        driver.get("http://localhost:8080/login");
+        loginPage.insertUserName(userName);
+        loginPage.insertPassword(password);
+        loginPage.clickLogin();
+    }
+
+    @When("I visit courses page")
+    public void i_visit_the_courses_page() {
+        driver.get("http://localhost:8080/courses");
+    }
+
     @When("I selected a new course")
     public void iSelectedANewCourse() {
         driver.get("http://localhost:8080/courses/1");
@@ -95,5 +122,4 @@ public class CourseProgressStepDefinitions {
         expectedProgressString = progress;
         assertEquals(expectedProgressString, progressString);
     }
-
 }
