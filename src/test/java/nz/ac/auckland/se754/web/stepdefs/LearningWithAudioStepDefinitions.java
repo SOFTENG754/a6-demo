@@ -25,6 +25,12 @@ public class LearningWithAudioStepDefinitions {
         lessonPage.insertWord(word);
     }
 
+    @Given("I select a word has no pronunciation available")
+    public void i_select_a_word_has_no_pronunciation_available() {
+        word = "invalid word";
+        lessonPage.insertWord(word);
+    }
+
     @When("I click on the pronounce button")
     public void i_click_on_the_pronounce_button() {
         lessonPage.clickPronounceButton();
@@ -41,5 +47,12 @@ public class LearningWithAudioStepDefinitions {
         String expectedPronounceAudioUrl = "http://localhost:8080/path/to/dummy/audio.wav";
         String pronounceAudioUrl = lessonPage.getPronounceAudioUrl();
         assertEquals(expectedPronounceAudioUrl, pronounceAudioUrl);
+    }
+
+    @Then("I should see an alert message pop-up saying no pronunciation available")
+    public void i_should_see_an_alert_message_popup_no_pronunciation_available() {
+        String expectedAlertText = "Unable to find pronunciation";
+        String alertText = lessonPage.getAlertText();
+        assertEquals(expectedAlertText, alertText);
     }
 }
