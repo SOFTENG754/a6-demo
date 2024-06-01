@@ -6,4 +6,5 @@ public interface WordLibrary {
     String[] getSynonyms(String word);
     String[] getAntonyms(String word);
     String getImagePath(String word);
+    String getAudioPath(String word);
 }

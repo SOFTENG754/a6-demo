@@ -45,6 +45,12 @@ public class LessonPage {
     @FindBy(how = How.ID, using = "image")
     private WebElement image;
 
+    @FindBy(how = How.ID, using = "pronounceButton")
+    private WebElement pronounceButton;
+
+    @FindBy(how = How.ID, using = "pronunciation")
+    private WebElement pronunciation;
+
     public void clickDefinitionButton() {
         definitionButton.click();
     }
@@ -77,6 +83,14 @@ public class LessonPage {
 
     public String getImageUrl() {
         return image.getAttribute("src");
+    }
+
+    public void clickPronounceButton() {
+        pronounceButton.click();
+    }
+
+    public String getPronounceAudioUrl() {
+        return pronunciation.getAttribute("src");
     }
 
     public void insertWord(String word) {

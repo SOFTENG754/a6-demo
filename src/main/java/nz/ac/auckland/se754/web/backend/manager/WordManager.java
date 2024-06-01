@@ -64,4 +64,13 @@ public class WordManager {
             return "Connection error";
         }
     }
+
+    public String retrieveAudioPath(String word) {
+        try {
+            String audioPath = wordLibrary.getAudioPath(word);
+            return Objects.requireNonNullElse(audioPath, "Unable to find audio path");
+        } catch (RuntimeException e) {
+            return "Connection error";
+        }
+    }
 }

@@ -76,6 +76,24 @@
             }
             xhr.send("word=" + encodeURIComponent(word));
         }
+        function pronounce() {
+            var word = document.getElementById("word").innerText;
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "${pageContext.request.contextPath}/lesson/getPronunciation", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+                    if (this.responseText === "Unable to find pronunciation") {
+                        alert("Unable to find pronunciation");
+                    }else if (this.responseText === "Connection error") {
+                        alert("Connection error");
+                    } else {
+                        document.getElementById("pronunciation").src = this.responseText;
+                    }
+                }
+            }
+            xhr.send("word=" + encodeURIComponent(word));
+        }
     </script>
 </head>
 
@@ -95,6 +113,8 @@
 <p id="synonymsAndAntonyms">${synonymsAndAntonyms}</p>
 <button id="showImageButton" onclick="getImage()">Show Image</button>
 <img id="image" src="${image}" alt="Image">
+<button id="pronounceButton" onclick="pronounce()">Pronounce</button>
+<audio id="pronunciation" src="${pronunciation}"></audio>
 </body>
 
 </html>

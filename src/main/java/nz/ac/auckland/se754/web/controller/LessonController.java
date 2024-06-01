@@ -65,4 +65,13 @@ public class LessonController {
         WordManager wordManager = new WordManager(wordLibrary);
         return wordManager.retrieveImagePath(word);
     }
+
+    @RequestMapping(value="/lesson/getPronunciation", method = RequestMethod.POST)
+    @ResponseBody
+    public String getPronunciation(@RequestParam("word") String word) {
+        WordLibrary wordLibrary = Mockito.mock(WordLibrary.class);
+        Mockito.when(wordLibrary.getAudioPath("valid word")).thenReturn("/path/to/dummy/audio.wav");
+        WordManager wordManager = new WordManager(wordLibrary);
+        return wordManager.retrieveAudioPath(word);
+    }
 }
