@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 public class LessonStepDefinitions {
     private WebDriver driver;
 
-    @Before("@vocabDefinitions or @learningWithVisualization")
+    @Before("@vocabDefinitions or @learningWithVisualization or @learningWithAudio")
     public void before() {
         driver = ChromeWebDriverManager.getDriver();
     }
