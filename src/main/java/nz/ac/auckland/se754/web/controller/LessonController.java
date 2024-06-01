@@ -72,6 +72,7 @@ public class LessonController {
         WordLibrary wordLibrary = Mockito.mock(WordLibrary.class);
         Mockito.when(wordLibrary.getAudioPath("valid word")).thenReturn("/path/to/dummy/audio.wav");
         Mockito.when(wordLibrary.getAudioPath("invalid word")).thenReturn("Unable to find pronunciation");
+        Mockito.when(wordLibrary.getAudioPath("server down")).thenThrow(new RuntimeException());
         WordManager wordManager = new WordManager(wordLibrary);
         return wordManager.retrieveAudioPath(word);
     }

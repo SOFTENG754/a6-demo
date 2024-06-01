@@ -31,6 +31,12 @@ public class LearningWithAudioStepDefinitions {
         lessonPage.insertWord(word);
     }
 
+    @Given("The server is down when getting pronunciation")
+    public void the_server_is_down_when_getting_pronunciation() {
+        word = "server down";
+        lessonPage.insertWord(word);
+    }
+
     @When("I click on the pronounce button")
     public void i_click_on_the_pronounce_button() {
         lessonPage.clickPronounceButton();
@@ -52,6 +58,13 @@ public class LearningWithAudioStepDefinitions {
     @Then("I should see an alert message pop-up saying no pronunciation available")
     public void i_should_see_an_alert_message_popup_no_pronunciation_available() {
         String expectedAlertText = "Unable to find pronunciation";
+        String alertText = lessonPage.getAlertText();
+        assertEquals(expectedAlertText, alertText);
+    }
+
+    @Then("I should see an alert message pop-up saying connection error when getting pronunciation")
+    public void i_should_see_an_alert_message_popup_connection_error_when_getting_pronunciation() {
+        String expectedAlertText = "Connection error";
         String alertText = lessonPage.getAlertText();
         assertEquals(expectedAlertText, alertText);
     }
