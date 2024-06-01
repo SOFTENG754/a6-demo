@@ -58,6 +58,24 @@
             }
             xhr.send("word=" + encodeURIComponent(word));
         }
+        function getImage() {
+            var word = document.getElementById("word").innerText;
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "${pageContext.request.contextPath}/lesson/getImage", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+                    if (this.responseText === "Unable to find image") {
+                        alert("Unable to find image");
+                    }else if (this.responseText === "Connection error") {
+                        alert("Connection error");
+                    } else {
+                        document.getElementById("image").src = this.responseText;
+                    }
+                }
+            }
+            xhr.send("word=" + encodeURIComponent(word));
+        }
     </script>
 </head>
 
@@ -75,6 +93,8 @@
 <p id="example">${example}</p>
 <button id="synonymsAndAntonymsButton" onclick="getSynonymsAndAntonyms()">Get Synonyms And Antonyms</button>
 <p id="synonymsAndAntonyms">${synonymsAndAntonyms}</p>
+<button id="showImageButton" onclick="getImage()">Show Image</button>
+<img id="image" src="${image}" alt="Image">
 </body>
 
 </html>

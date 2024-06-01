@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class WordManager {
-    private WordLibrary wordLibrary;
+    private final WordLibrary wordLibrary;
 
     public WordManager(WordLibrary wordLibrary) {
         this.wordLibrary = wordLibrary;
@@ -51,6 +51,15 @@ public class WordManager {
                 relatedWords.addAll(Arrays.asList(antonyms));
             }
             return relatedWords;
+        } catch (RuntimeException e) {
+            return "Connection error";
+        }
+    }
+
+    public String retrieveImagePath(String word) {
+        try {
+            String imagePath = wordLibrary.getImagePath(word);
+            return Objects.requireNonNullElse(imagePath, "Unable to find image path");
         } catch (RuntimeException e) {
             return "Connection error";
         }
