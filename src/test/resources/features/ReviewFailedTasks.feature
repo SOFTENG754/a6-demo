@@ -1,3 +1,4 @@
+@reviewFailedTasks
 Feature: Review Failed Tasks
   Scenario Outline: View list of failed tasks
     Given I am in a lesson
