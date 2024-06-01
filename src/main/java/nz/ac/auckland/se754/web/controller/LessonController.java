@@ -10,11 +10,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+import java.util.Map;
+
 @Controller
 public class LessonController {
 
     @RequestMapping(value="/lesson", method = RequestMethod.GET)
     public String showLessonPage(ModelMap model){
+        model.addAttribute("tasks", List.of(
+                Map.of("id", "task1", "question", "What is あ?", "correctAnswer", "a", "status", "Uncompleted"),
+                Map.of("id", "task2", "question", "What is い?", "correctAnswer", "i", "status", "Uncompleted")
+        ));
         return "lesson";
     }
 

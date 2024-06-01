@@ -51,6 +51,7 @@ public class LessonPage {
     @FindBy(how = How.ID, using = "pronunciation")
     private WebElement pronunciation;
 
+
     public void clickDefinitionButton() {
         definitionButton.click();
     }
@@ -108,4 +109,33 @@ public class LessonPage {
             return null;
         }
     }
+
+    public String getTaskStatus(String taskId) {
+        WebElement statusElement = driver.findElement(By.id("status-" + taskId));
+        return statusElement.getText();
+    }
+
+    public void clickGetHint(String taskId) {
+        WebElement hintButton = driver.findElement(By.id("getHint-" + taskId));
+        hintButton.click();
+    }
+
+    public String getHintText(String taskId) {
+        WebElement hintElement = driver.findElement(By.id("hint-" + taskId));
+        return hintElement.getText();
+    }
+
+    public void clickRedoTask(String taskId) {
+        WebElement redoButton = driver.findElement(By.id("redoTask-" + taskId));
+        redoButton.click();
+    }
+
+    public void submitTask(String taskId, String answer) {
+        WebElement answerBox = driver.findElement(By.id("answer-" + taskId));
+        answerBox.clear();
+        answerBox.sendKeys(answer);
+        WebElement submitButton = driver.findElement(By.id("submitTask-" + taskId));
+        submitButton.click();
+    }
+
 }
