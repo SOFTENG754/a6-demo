@@ -86,11 +86,23 @@ public class ReviewFailedTasksStepDefinitions {
     public void i_have_a_passed_task() {
         lessonPage.submitTask("task1", "a");
     }
+
     @Then("I should not see a hint for the task")
     public void i_should_not_see_a_hint_for_the_task() {
         String hint = lessonPage.getHintText("task1");
         String expectedHint = "";
         assertEquals(expectedHint, hint);
+    }
+
+    @When("I click on the redo button for the task")
+    public void i_click_on_the_redo_button_for_the_task() {
+        lessonPage.clickRedoTask("task1");
+    }
+    @Then("I should see the task is reset")
+    public void i_should_see_the_task_is_reset() {
+        String taskOneStatus = lessonPage.getTaskStatus("task1");
+        String expectedTaskOneStatus = "Uncompleted: task1";
+        assertEquals(expectedTaskOneStatus, taskOneStatus);
     }
 
 }
