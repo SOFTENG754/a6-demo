@@ -5,4 +5,5 @@ public interface WordLibrary {
     String[] getExamples(String word);
     String[] getSynonyms(String word);
     String[] getAntonyms(String word);
+    String getImagePath(String word);
 }

@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
-
 @Controller
 public class LessonController {
 
@@ -55,5 +53,15 @@ public class LessonController {
         Mockito.when(wordLibrary.getAntonyms("server down")).thenThrow(new RuntimeException());
         WordManager wordManager = new WordManager(wordLibrary);
         return wordManager.retrieveSynonymsAndAntonyms(word);
+    }
+
+    @RequestMapping(value="/lesson/getImage", method = RequestMethod.POST)
+    @ResponseBody
+    public String getImage(@RequestParam("word") String word) {
+        WordLibrary wordLibrary = Mockito.mock(WordLibrary.class);
+        Mockito.when(wordLibrary.getImagePath("valid word")).thenReturn("/path/to/dummy/image.png");
+        Mockito.when(wordLibrary.getImagePath("server down")).thenThrow(new RuntimeException());
+        WordManager wordManager = new WordManager(wordLibrary);
+        return wordManager.retrieveImagePath(word);
     }
 }
