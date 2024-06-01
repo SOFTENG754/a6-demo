@@ -1,6 +1,7 @@
 package nz.ac.auckland.se754.web.stepdefs;
 
 import io.cucumber.java.Before;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import nz.ac.auckland.se754.web.pages.LessonPage;
@@ -63,5 +64,23 @@ public class ReviewFailedTasksStepDefinitions {
         assertEquals(expectedTaskOneStatus, taskOneStatus);
         assertEquals(expectedTaskTwoStatus, taskTwoStatus);
     }
+
+    @Given("I have a failed task")
+    public void i_have_a_failed_task() {
+        lessonPage.submitTask("task1", "incorrectAnswer");
+    }
+
+    @When("I click on the hint button for the task")
+    public void i_click_on_the_hint_button_for_the_task() {
+        lessonPage.clickGetHint("task1");
+    }
+
+    @Then("I should see a hint for the task")
+    public void i_should_see_a_hint_for_the_task() {
+        String hint = lessonPage.getHintText("task1");
+        String expectedHint = "Hint for task1";
+        assertEquals(expectedHint, hint);
+    }
+
 
 }
