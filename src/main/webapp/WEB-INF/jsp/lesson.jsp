@@ -97,6 +97,8 @@
 
         function getHint(taskId) {
             if (document.getElementById("status-${task.id}").innerText.includes("Failed")) {
+            var statusElement = document.getElementById("status-" + taskId);
+            if (statusElement.innerText.includes("Failed")) {
                 document.getElementById("hint-" + taskId).innerText = "Hint for " + taskId;
             } else {
                 document.getElementById("hint-" + taskId).innerText = "";
