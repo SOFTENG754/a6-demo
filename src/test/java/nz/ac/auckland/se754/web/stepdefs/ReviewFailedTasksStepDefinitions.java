@@ -82,5 +82,15 @@ public class ReviewFailedTasksStepDefinitions {
         assertEquals(expectedHint, hint);
     }
 
+    @Given("I have a passed task")
+    public void i_have_a_passed_task() {
+        lessonPage.submitTask("task1", "a");
+    }
+    @Then("I should not see a hint for the task")
+    public void i_should_not_see_a_hint_for_the_task() {
+        String hint = lessonPage.getHintText("task1");
+        String expectedHint = "";
+        assertEquals(expectedHint, hint);
+    }
 
 }
