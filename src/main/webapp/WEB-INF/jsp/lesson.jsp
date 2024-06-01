@@ -94,6 +94,11 @@
             }
             xhr.send("word=" + encodeURIComponent(word));
         }
+        function submitTask(taskId, correctAnswer) {
+            var userAnswer = document.getElementById("answer-" + taskId).value;
+            var status = userAnswer === correctAnswer ? "Passed: " + taskId : "Failed: " + taskId;
+            document.getElementById("status-" + taskId).innerText = status;
+        }
     </script>
 </head>
 
@@ -115,6 +120,20 @@
 <img id="image" src="${image}" alt="Image">
 <button id="pronounceButton" onclick="pronounce()">Pronounce</button>
 <audio id="pronunciation" src="${pronunciation}"></audio>
+
+<h2>Tasks</h2>
+<div id="tasks">
+    <c:forEach var="task" items="${tasks}">
+        <div>
+            <p id="status-${task.id}">${task.status}: ${task.id}</p>
+            <p>${task.question}</p>
+            <input type="text" id="answer-${task.id}" placeholder="Answer">
+            <button id="submitTask-${task.id}" onclick="submitTask('${task.id}', '${task.correctAnswer}')">Submit</button>
+            <p id="hint-${task.id}"></p>
+        </div>
+    </c:forEach>
+</div>
+
 </body>
 
 </html>
