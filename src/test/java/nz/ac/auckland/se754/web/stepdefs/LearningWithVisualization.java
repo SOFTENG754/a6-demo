@@ -26,6 +26,12 @@ public class LearningWithVisualization {
         lessonPage.insertWord(word);
     }
 
+    @Given("The word does not have an image")
+    public void the_word_does_not_have_an_image() {
+        word = "invalid word";
+        lessonPage.insertWord(word);
+    }
+
     @When("I click on the show image button")
     public void i_click_on_the_show_image_button() {
         lessonPage.clickShowImageButton();
@@ -40,6 +46,13 @@ public class LearningWithVisualization {
             throw new RuntimeException(e);
         }
         String expectedImageUrl = "http://localhost:8080/path/to/dummy/image.png";
+        String imageUrl = lessonPage.getImageUrl();
+        assertEquals(expectedImageUrl, imageUrl);
+    }
+
+    @Then("I should see the default image")
+    public void i_should_see_the_default_image() {
+        String expectedImageUrl = "http://localhost:8080/path/to/default/image.png";
         String imageUrl = lessonPage.getImageUrl();
         assertEquals(expectedImageUrl, imageUrl);
     }

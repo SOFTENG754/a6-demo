@@ -6,3 +6,9 @@ Feature: Learning with Visualization
     And The word has an image
     When I click on the show image button
     Then I should see the image of the word
+
+  Scenario: user wants to view the image of an invalid word
+    Given I am in a lesson
+    And The word does not have an image
+    When I click on the show image button
+    Then I should see the default image
