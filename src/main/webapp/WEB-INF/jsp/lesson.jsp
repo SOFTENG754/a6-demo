@@ -96,7 +96,6 @@
         }
 
         function getHint(taskId) {
-            if (document.getElementById("status-${task.id}").innerText.includes("Failed")) {
             var statusElement = document.getElementById("status-" + taskId);
             if (statusElement.innerText.includes("Failed")) {
                 document.getElementById("hint-" + taskId).innerText = "Hint for " + taskId;
@@ -104,6 +103,11 @@
                 document.getElementById("hint-" + taskId).innerText = "";
             }
         }
+
+        function redoTask(taskId) {
+            document.getElementById("status-" + taskId).innerText = "Uncompleted: " + taskId;
+        }
+
         function submitTask(taskId, correctAnswer) {
             var userAnswer = document.getElementById("answer-" + taskId).value;
             var status = userAnswer === correctAnswer ? "Passed: " + taskId : "Failed: " + taskId;
@@ -139,6 +143,7 @@
             <p>${task.question}</p>
             <input type="text" id="answer-${task.id}" placeholder="Answer">
             <button id="submitTask-${task.id}" onclick="submitTask('${task.id}', '${task.correctAnswer}')">Submit</button>
+            <button id="redoTask-${task.id}" onclick="redoTask('${task.id}')">Redo</button>
             <button id="getHint-${task.id}" onclick="getHint('${task.id}')">Get Hint</button>
             <p id="hint-${task.id}"></p>
         </div>

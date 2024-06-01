@@ -124,6 +124,12 @@ public class LessonPage {
         WebElement hintElement = driver.findElement(By.id("hint-" + taskId));
         return hintElement.getText();
     }
+
+    public void clickRedoTask(String taskId) {
+        WebElement redoButton = driver.findElement(By.id("redoTask-" + taskId));
+        redoButton.click();
+    }
+
     public void submitTask(String taskId, String answer) {
         WebElement answerBox = driver.findElement(By.id("answer-" + taskId));
         answerBox.clear();
