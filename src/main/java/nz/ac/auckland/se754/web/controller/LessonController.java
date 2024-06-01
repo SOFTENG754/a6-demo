@@ -71,6 +71,7 @@ public class LessonController {
     public String getPronunciation(@RequestParam("word") String word) {
         WordLibrary wordLibrary = Mockito.mock(WordLibrary.class);
         Mockito.when(wordLibrary.getAudioPath("valid word")).thenReturn("/path/to/dummy/audio.wav");
+        Mockito.when(wordLibrary.getAudioPath("invalid word")).thenReturn("Unable to find pronunciation");
         WordManager wordManager = new WordManager(wordLibrary);
         return wordManager.retrieveAudioPath(word);
     }
