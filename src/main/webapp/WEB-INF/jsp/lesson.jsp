@@ -94,6 +94,10 @@
             }
             xhr.send("word=" + encodeURIComponent(word));
         }
+
+        function getHint(taskId) {
+            document.getElementById("hint-" + taskId).innerText = "Hint for " + taskId;
+        }
         function submitTask(taskId, correctAnswer) {
             var userAnswer = document.getElementById("answer-" + taskId).value;
             var status = userAnswer === correctAnswer ? "Passed: " + taskId : "Failed: " + taskId;
@@ -129,6 +133,7 @@
             <p>${task.question}</p>
             <input type="text" id="answer-${task.id}" placeholder="Answer">
             <button id="submitTask-${task.id}" onclick="submitTask('${task.id}', '${task.correctAnswer}')">Submit</button>
+            <button id="getHint-${task.id}" onclick="getHint('${task.id}')">Get Hint</button>
             <p id="hint-${task.id}"></p>
         </div>
     </c:forEach>
