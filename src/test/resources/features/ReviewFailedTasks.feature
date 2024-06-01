@@ -23,3 +23,7 @@ Feature: Review Failed Tasks
     | failed     | should            |
     | passed     | should not        |
 
+  Scenario: Redo failed task
+    And I have a failed task
+    When I click on the redo button for the task
+    Then I should see the task is reset
