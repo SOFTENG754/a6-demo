@@ -22,11 +22,6 @@ public class VocabDefinitionsStepDefinitions {
         lessonPage = new LessonPage(driver);
     }
 
-    @Given("I am in a lesson")
-    public void i_am_in_a_lesson() {
-        driver.get("http://localhost:8080/lesson");
-    }
-
     @Given("The word has a definition")
     public void the_word_has_a_definition() {
         word = "valid word";

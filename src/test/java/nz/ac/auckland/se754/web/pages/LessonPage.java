@@ -12,7 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class LessonPage {
-    private WebDriver driver;
+    private final WebDriver driver;
     public LessonPage(WebDriver driver) {
         this.driver = driver ;
         PageFactory.initElements(driver, this);
@@ -39,6 +39,12 @@ public class LessonPage {
     @FindBy(how = How.ID, using = "synonymsAndAntonyms")
     private WebElement synonymsAndAntonyms;
 
+    @FindBy(how = How.ID, using = "showImageButton")
+    private WebElement showImageButton;
+
+    @FindBy(how = How.ID, using = "image")
+    private WebElement image;
+
     public void clickDefinitionButton() {
         definitionButton.click();
     }
@@ -63,6 +69,14 @@ public class LessonPage {
         String synonymsAndAntonymsText = synonymsAndAntonyms.getText();
         List<String> synonymsAndAntonymsList = Arrays.asList(synonymsAndAntonymsText.replace("\"", "").replace("[","").replace("]","").split(","));
         return new ArrayList<>(synonymsAndAntonymsList);
+    }
+
+    public void clickShowImageButton() {
+        showImageButton.click();
+    }
+
+    public String getImageUrl() {
+        return image.getAttribute("src");
     }
 
     public void insertWord(String word) {
