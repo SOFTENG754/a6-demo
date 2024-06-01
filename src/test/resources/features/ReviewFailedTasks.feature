@@ -10,3 +10,9 @@ Feature: Review Failed Tasks
     | 0      | no                |
     | 50     | half              |
     | 100    | all               |
+
+  Scenario: Get hint for failed task
+    Given I am in a lesson
+    And I have a failed task
+    When I click on the hint button for the task
+    Then I should see a hint for the task
