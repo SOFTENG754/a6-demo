@@ -16,3 +16,9 @@ Feature: Review Failed Tasks
     And I have a failed task
     When I click on the hint button for the task
     Then I should see a hint for the task
+
+Scenario: Get hints for passed task
+    Given I am in a lesson
+    And I have a passed task
+    When I click on the hint button for the task
+    Then I should not see a hint for the task
