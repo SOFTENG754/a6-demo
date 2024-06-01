@@ -60,6 +60,7 @@ public class LessonController {
     public String getImage(@RequestParam("word") String word) {
         WordLibrary wordLibrary = Mockito.mock(WordLibrary.class);
         Mockito.when(wordLibrary.getImagePath("valid word")).thenReturn("/path/to/dummy/image.png");
+        Mockito.when(wordLibrary.getImagePath("invalid word")).thenReturn("/path/to/default/image.png");
         Mockito.when(wordLibrary.getImagePath("server down")).thenThrow(new RuntimeException());
         WordManager wordManager = new WordManager(wordLibrary);
         return wordManager.retrieveImagePath(word);
