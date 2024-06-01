@@ -96,7 +96,11 @@
         }
 
         function getHint(taskId) {
-            document.getElementById("hint-" + taskId).innerText = "Hint for " + taskId;
+            if (document.getElementById("status-${task.id}").innerText.includes("Failed")) {
+                document.getElementById("hint-" + taskId).innerText = "Hint for " + taskId;
+            } else {
+                document.getElementById("hint-" + taskId).innerText = "";
+            }
         }
         function submitTask(taskId, correctAnswer) {
             var userAnswer = document.getElementById("answer-" + taskId).value;
