@@ -11,7 +11,6 @@ public class LessonStepDefinitions {
     @Before("@vocabDefinitions or @learningWithVisualization")
     public void before() {
         driver = ChromeWebDriverManager.getDriver();
-        LessonPage lessonPage = new LessonPage(driver);
     }
 
     @Given("I am in a lesson")

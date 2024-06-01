@@ -12,3 +12,9 @@ Feature: Learning with Visualization
     And The word does not have an image
     When I click on the show image button
     Then I should see the default image
+
+  Scenario: user is informed when error occurs getting image for a word
+    Given I am in a lesson
+    And The server is down when getting image
+    When I click on the show image button
+    Then I should see an error message saying connection error

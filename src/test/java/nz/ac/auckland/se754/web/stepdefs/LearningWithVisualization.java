@@ -32,6 +32,12 @@ public class LearningWithVisualization {
         lessonPage.insertWord(word);
     }
 
+    @Given("The server is down when getting image")
+    public void the_server_is_down_when_getting_image() {
+        word = "server down";
+        lessonPage.insertWord(word);
+    }
+
     @When("I click on the show image button")
     public void i_click_on_the_show_image_button() {
         lessonPage.clickShowImageButton();
@@ -55,5 +61,12 @@ public class LearningWithVisualization {
         String expectedImageUrl = "http://localhost:8080/path/to/default/image.png";
         String imageUrl = lessonPage.getImageUrl();
         assertEquals(expectedImageUrl, imageUrl);
+    }
+
+    @Then("I should see an error message saying connection error")
+    public void i_should_see_an_error_message_saying_connection_error() {
+        String alertText = lessonPage.getAlertText();
+        String expectedAlertText = "Connection error";
+        assertEquals(expectedAlertText, alertText);
     }
 }
