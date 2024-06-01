@@ -9,14 +9,13 @@ import org.openqa.selenium.WebDriver;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class LearningWithVisualization {
-    private WebDriver driver;
+public class LearningWithVisualizationStepDefinitions {
     private LessonPage lessonPage;
     private String word;
 
     @Before("@learningWithVisualization")
     public void before() {
-        driver = ChromeWebDriverManager.getDriver();
+        WebDriver driver = ChromeWebDriverManager.getDriver();
         lessonPage = new LessonPage(driver);
     }
 
