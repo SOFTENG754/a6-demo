@@ -58,4 +58,12 @@ public class DigitalWellbeingStepDefinitions {
         int screenTime = welcomePage.getScreenTime();
         assertEquals(expectedScreenTime, screenTime);
     }
+
+    @Then("the user should no longer be prompted to take a break")
+    public void the_user_should_no_longer_be_prompted_to_take_a_break() {
+        String expectedNotification = "";
+        String notification = welcomePage.getNotification();
+        assertEquals(expectedNotification, notification);
+    }
+
 }
