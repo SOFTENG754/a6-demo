@@ -11,7 +11,10 @@
                     "You should take a break!";
             document.getElementById("notification").innerText = notification;
          }
-         document.getElementById("notification").innerText = notification;
+         else {
+            var notification = "";
+            document.getElementById("notification").innerText = notification;
+         }
       }
 
       function updateBreakTime(newTime) {
