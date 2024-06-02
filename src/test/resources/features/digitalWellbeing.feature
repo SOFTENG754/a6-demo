@@ -16,3 +16,8 @@ Feature: Digital Wellbeing
     When the user's break time exceeds five or more minutes
     Then the user's break time should be stored and accumulated
 
+  Scenario: Reset screen time after break
+    Given the user is not using the application
+    When the user's break time exceeds five or more minutes
+    Then the accumulated screen time will reset to 0
+
