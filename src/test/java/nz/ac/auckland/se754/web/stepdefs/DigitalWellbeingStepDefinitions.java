@@ -40,4 +40,19 @@ public class DigitalWellbeingStepDefinitions {
         assertEquals(expectedNotification, notification);
     }
 
+    @Given("the user is taking a break from the application")
+    public void the_user_is_taking_a_break_from_the_application() {
+        // Since we're mocking, we don't need to perform any action here
+    }
+    @When("the user is not using the application for five or more minutes")
+    public void the_user_is_not_using_the_application_for_five_or_more_minutes() {
+        driver.get("http://localhost:8080/welcome");
+        welcomePage.setBreakTime(6);
+    }
+    @Then("the user's break time should be stored and accumulated")
+    public void the_user_s_break_time_should_be_stored_and_accumulated() {
+        int breakTime = welcomePage.getBreakTime();
+        int expectedBreakTime = 6;
+        assertEquals(expectedBreakTime, breakTime);
+    }
 }
