@@ -47,15 +47,11 @@ public class DigitalWellbeingStepDefinitions {
         assertEquals(expectedBreakTime, breakTime);
     }
 
-    @Given("the user is not using the application")
-    public void the_user_is_not_using_the_application() {
-        // Since we're mocking, we don't need to perform any action here
-    }
-    @When("the user's break time exceeds five or more minutes")
-    public void the_user_s_break_time_exceeds_five_or_more_minutes() {
-        driver.get("http://localhost:8080/welcome");
+    @When("the user takes a break that exceeds five or more minutes")
+    public void the_user_takes_a_break_that_exceeds_five_or_more_minutes() {
         welcomePage.setBreakTime(6);
     }
+
     @Then("the accumulated screen time will reset to 0")
     public void the_accumulated_screen_time_will_reset_to_zero() {
         int expectedScreenTime = 0;

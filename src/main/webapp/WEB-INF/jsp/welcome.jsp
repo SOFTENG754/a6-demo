@@ -4,14 +4,12 @@
    <script>
       var screenTime = ${screenTime};
       var breakTime = ${breakTime};
-      var notification = "";
 
       function updateNotification() {
          if (screenTime > 60) {
-            notification = "You have been learning for more than 60 minutes! " +
+            var notification = "You have been learning for more than 60 minutes! " +
                     "You should take a break!";
-         } else {
-            notification = "";
+            document.getElementById("notification").innerText = notification;
          }
          document.getElementById("notification").innerText = notification;
       }
