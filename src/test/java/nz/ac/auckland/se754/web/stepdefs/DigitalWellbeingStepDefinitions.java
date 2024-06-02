@@ -56,4 +56,10 @@ public class DigitalWellbeingStepDefinitions {
         driver.get("http://localhost:8080/welcome");
         welcomePage.setBreakTime(6);
     }
+    @Then("the accumulated screen time will reset to 0")
+    public void the_accumulated_screen_time_will_reset_to_zero() {
+        int expectedScreenTime = 0;
+        int screenTime = welcomePage.getScreenTime();
+        assertEquals(expectedScreenTime, screenTime);
+    }
 }
