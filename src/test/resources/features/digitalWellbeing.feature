@@ -19,3 +19,7 @@ Feature: Digital Wellbeing
     When the user takes a break that exceeds five or more minutes
     Then the accumulated screen time will reset to 0
 
+  Scenario: Stop break prompts after sufficient break
+    When the user uses the application for 60 or more minutes
+    And the user takes a break that exceeds five or more minutes
+    Then the user should no longer be prompted to take a break
