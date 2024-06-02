@@ -1,4 +1,6 @@
+@digitalWellbeing
 Feature: Digital Wellbeing
+
   Scenario: Accumulate screen time
     Given the user is using the language learning application
     When the user uses the application for 60 or more minutes
