@@ -3,6 +3,7 @@
    <title>SOFTENG754 Learn a new language!</title>
    <script>
       var screenTime = ${screenTime};
+      var breakTime = ${breakTime};
       var notification = "";
 
       function updateNotification() {
@@ -13,6 +14,11 @@
             notification = "";
          }
          document.getElementById("notification").innerText = notification;
+      }
+
+      function updateBreakTime(newTime) {
+         breakTime = newTime;
+         document.getElementById("breakTime").innerText = breakTime;
       }
 
       function updateScreenTime(newTime) {
@@ -30,6 +36,7 @@
 
 <h2>Digital Wellbeing</h2>
 <p>Screen Time: <span id="screenTime">${screenTime}</span> minutes</p>
+<p>Break Time: <span id="breakTime">${breakTime}</span> minutes</p>
 <p id="notification">${notification}</p>
 </body>
 </html>

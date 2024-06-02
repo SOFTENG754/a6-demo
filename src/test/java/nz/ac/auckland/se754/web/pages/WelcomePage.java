@@ -21,8 +21,19 @@ public class WelcomePage {
 
     public void setScreenTime(int minutes) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("document.getElementById('screenTime').innerText = arguments[0];", Integer.toString(minutes));
         js.executeScript("updateScreenTime(arguments[0]);", minutes);
+    }
+
+    public int getBreakTime() {
+        WebElement breakTimeElement = driver.findElement(By.id("breakTime"));
+        return Integer.parseInt(breakTimeElement.getText());
+    }
+
+    public void setBreakTime(int minutes) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("updateBreakTime(arguments[0]);", minutes);
+    }
+
     public String getNotification() {
         WebElement notificationElement = driver.findElement(By.id("notification"));
         return notificationElement.getText();
