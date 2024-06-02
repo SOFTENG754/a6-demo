@@ -19,6 +19,9 @@
       function updateBreakTime(newTime) {
          breakTime = newTime;
          document.getElementById("breakTime").innerText = breakTime;
+         if (breakTime > 5) {
+            updateScreenTime(0);
+         }
       }
 
       function updateScreenTime(newTime) {
