@@ -11,8 +11,10 @@ public class WelcomeController {
     @RequestMapping(value = "/welcome", method = RequestMethod.GET)
     public String showWelcomePage(ModelMap model) {
         int screenTime = 0;
+        String notification = "";
         model.addAttribute("name", "User");
         model.addAttribute("screenTime", screenTime);
+        model.addAttribute("notification", notification);
 
         return "welcome";
     }

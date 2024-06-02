@@ -22,5 +22,9 @@ public class WelcomePage {
     public void setScreenTime(int minutes) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("document.getElementById('screenTime').innerText = arguments[0];", Integer.toString(minutes));
+        js.executeScript("updateScreenTime(arguments[0]);", minutes);
+    public String getNotification() {
+        WebElement notificationElement = driver.findElement(By.id("notification"));
+        return notificationElement.getText();
     }
 }
