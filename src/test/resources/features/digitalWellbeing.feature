@@ -12,7 +12,7 @@ Feature: Digital Wellbeing
     Then the user should be prompted to take a break
 
   Scenario: Accumulate break time
-    Given the user is taking a break from the application
-    When the user is not using the application for five or more minutes
+    Given the user is not using the application
+    When the user's break time exceeds five or more minutes
     Then the user's break time should be stored and accumulated
 
