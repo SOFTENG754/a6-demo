@@ -38,4 +38,22 @@ public class ProfileController {
 
         return "profile";
     }
+
+    @RequestMapping(value = "/uploadProfilePicture", method = RequestMethod.POST)
+    public String changeProfilePicture(ModelMap model, @RequestParam String newProfilePicture, HttpSession session) {
+
+        if (!isImageFile(newProfilePicture)) {
+            model.addAttribute("alertMessage", "Invalid file, please upload a valid image file");
+            return "profile";
+        }
+
+        model.addAttribute("alertMessage", "Your profile picture has been changed successfully");
+        return "profile";
+    }
+
+    private boolean isImageFile(String fileName) {
+        // check if file name ends with .png or .jpg
+        String lowerCaseFileName = fileName.toLowerCase();
+        return lowerCaseFileName.endsWith(".png") || lowerCaseFileName.endsWith(".jpg");
+    }
 }
