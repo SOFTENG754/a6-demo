@@ -1,5 +1,7 @@
 package nz.ac.auckland.se754.web.service;
 
+import nz.ac.auckland.se754.web.model.User;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -21,4 +23,9 @@ public class Profile {
         return !isUsernameTaken && isValidUsername;
 
     }
+
+    public void updateUsername(User user, String username) {
+        user.setUsername(username);
+    }
+
 }

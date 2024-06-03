@@ -19,6 +19,14 @@ public class User {
         LearningProgressManager.startLearningProgress(this.username, learningProgress);
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public void setCourses(Course[] courses){
         this.courses = courses;
     }
