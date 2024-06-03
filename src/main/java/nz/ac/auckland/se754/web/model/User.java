@@ -12,6 +12,7 @@ public class User {
     LearningProgress learningProgress;
     public String username;
     Course[] courses;
+    public String profilePicture;
 
     public User(String username){
         this.username = username;
@@ -25,6 +26,10 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
     }
 
     public void setCourses(Course[] courses){

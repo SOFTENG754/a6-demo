@@ -28,4 +28,11 @@ public class Profile {
         user.setUsername(username);
     }
 
+    public boolean isImageFile(String fileName) {
+        // check if file name ends with .png or .jpg
+        String lowerCaseFileName = fileName.toLowerCase();
+        return lowerCaseFileName.endsWith(".png") || lowerCaseFileName.endsWith(".jpg");
+    }
+
+    public void updateProfilePicture(User user, String profilePicture)  {user.setProfilePicture(profilePicture);}
 }

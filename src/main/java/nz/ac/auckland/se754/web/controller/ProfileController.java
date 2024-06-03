@@ -15,6 +15,10 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class ProfileController {
 
+    private final User dummyUser = Mockito.mock(User.class);
+    private final Database mockDB = Mockito.mock(Database.class);
+    private final Profile service = new Profile(mockDB);
+
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
     public String showProfilePage() {
         return "profile";
@@ -22,11 +26,8 @@ public class ProfileController {
 
     @RequestMapping(value = "/profile", method = RequestMethod.POST)
     public String changeUsername(ModelMap model, @RequestParam String newUsername, HttpSession session) {
-        User dummyUser = Mockito.mock(User.class);
-        Database mockDB = Mockito.mock(Database.class);
         Mockito.when(mockDB.checkUsernameExists("user1")).thenReturn(false);
 
-        Profile service = new Profile(mockDB);
         boolean isValidUsername = service.validateUsername(newUsername);
 
         if (isValidUsername) {
@@ -42,18 +43,14 @@ public class ProfileController {
     @RequestMapping(value = "/uploadProfilePicture", method = RequestMethod.POST)
     public String changeProfilePicture(ModelMap model, @RequestParam String newProfilePicture, HttpSession session) {
 
-        if (!isImageFile(newProfilePicture)) {
+        if (!service.isImageFile(newProfilePicture)) {
             model.addAttribute("alertMessage", "Invalid file, please upload a valid image file");
             return "profile";
         }
 
+        service.updateProfilePicture(dummyUser, newProfilePicture);
         model.addAttribute("alertMessage", "Your profile picture has been changed successfully");
         return "profile";
     }
 
-    private boolean isImageFile(String fileName) {
-        // check if file name ends with .png or .jpg
-        String lowerCaseFileName = fileName.toLowerCase();
-        return lowerCaseFileName.endsWith(".png") || lowerCaseFileName.endsWith(".jpg");
-    }
 }
