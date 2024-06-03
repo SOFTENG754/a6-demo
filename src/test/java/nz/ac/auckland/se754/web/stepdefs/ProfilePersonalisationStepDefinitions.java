@@ -5,7 +5,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import nz.ac.auckland.se754.web.pages.ProfilePage;
-import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -15,7 +14,7 @@ public class ProfilePersonalisationStepDefinitions {
     private WebDriver driver;
     private ProfilePage profilePage;
 
-    @Before
+    @Before("@profilePersonalisation")
     public void setup() {
         driver = ChromeWebDriverManager.getDriver();
         profilePage = new ProfilePage(driver);
