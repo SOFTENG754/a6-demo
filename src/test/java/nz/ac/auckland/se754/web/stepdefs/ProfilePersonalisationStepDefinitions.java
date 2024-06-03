@@ -41,4 +41,20 @@ public class ProfilePersonalisationStepDefinitions {
         String expectedAlertText = "Your username has been changed to user1";
         assertEquals(expectedAlertText, alertText);
     }
+
+    @When("I upload an image file")
+    public void i_upload_an_image_file() {}
+
+    @When("I press the change profile picture button")
+    public void i_press_the_change_profile_picture_button() {
+        profilePage.clickChangeProfilePictureButton();
+    }
+
+    @Then("I should see an alert message pop-up saying profile picture successfully changed")
+    public void i_should_see_an_alert_message_pop_up_saying_profile_picture_successfully_changed() {
+        String alertText = profilePage.getAlertText();
+        String expectedAlertText = "Your profile picture has been successfully changed";
+        assertEquals(expectedAlertText, alertText);
+    }
+
 }

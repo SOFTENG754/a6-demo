@@ -44,4 +44,7 @@ public class ProfilePage {
             return null;
         }
     }
+
+    public void clickChangeProfilePictureButton() {
+    }
 }
