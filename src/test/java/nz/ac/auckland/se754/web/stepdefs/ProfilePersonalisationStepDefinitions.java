@@ -1,6 +1,7 @@
 package nz.ac.auckland.se754.web.stepdefs;
 
 import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -90,6 +91,25 @@ public class ProfilePersonalisationStepDefinitions {
     public void i_should_see_an_alert_message_pop_up_saying_flag_successfully_changed() {
         String alertText = profilePage.getAlertText();
         String expectedAlertText = "Your flags have been changed successfully";
+        assertEquals(expectedAlertText, alertText);
+    }
+
+
+    @When("I enter {string} in the status field")
+    public void i_enter_in_the_status_field(String message) {
+        profilePage.enterStatusMessage(message);
+
+    }
+
+    @When("I press the update status button")
+    public void i_press_the_update_status_button() {
+        profilePage.clickChangeStatusButton();
+    }
+
+    @Then("I should see an alert message pop-up saying status successfully changed")
+    public void i_should_see_an_alert_message_pop_up_saying_status_successfully_changed() {
+        String alertText = profilePage.getAlertText();
+        String expectedAlertText = "Your status message has been changed successfully";
         assertEquals(expectedAlertText, alertText);
     }
 }

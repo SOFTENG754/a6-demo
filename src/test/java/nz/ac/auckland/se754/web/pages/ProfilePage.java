@@ -56,6 +56,11 @@ public class ProfilePage {
     @FindBy(how = How.ID, using = "flagUK")
     private WebElement flagUK;
 
+    @FindBy(how = How.ID, using = "statusMessage")
+    private WebElement statusMessage;
+
+    @FindBy(how = How.ID, using = "changeStatusBtn")
+    private WebElement changeStatusButton;
 
 
     public void enterNewUsername(String newUsername) {
@@ -128,5 +133,13 @@ public class ProfilePage {
 
     public void clickChangeFlagsButton() {
         this.changeFlagsButton.click();
+    }
+
+    public void enterStatusMessage(String message) {
+        this.statusMessage.sendKeys(message);
+    }
+
+    public void clickChangeStatusButton() {
+        this.changeStatusButton.click();
     }
 }
