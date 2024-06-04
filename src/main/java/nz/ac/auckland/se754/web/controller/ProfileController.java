@@ -61,6 +61,7 @@ public class ProfileController {
             return "profile";
         }
 
+        service.updateBannerPicture(dummyUser, newBannerPicture);
         model.addAttribute("alertMessage", "Your banner picture has been changed successfully");
         return "profile";
     }

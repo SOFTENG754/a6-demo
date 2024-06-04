@@ -13,6 +13,7 @@ public class User {
     public String username;
     Course[] courses;
     public String profilePicture;
+    public String bannerPicture;
 
     public User(String username){
         this.username = username;
@@ -30,6 +31,10 @@ public class User {
 
     public void setProfilePicture(String profilePicture) {
         this.profilePicture = profilePicture;
+    }
+
+    public void setBannerPicture(String bannerPicture) {
+        this.bannerPicture = bannerPicture;
     }
 
     public void setCourses(Course[] courses){
