@@ -53,4 +53,16 @@ public class ProfileController {
         return "profile";
     }
 
+    @RequestMapping(value = "/uploadBannerPicture", method = RequestMethod.POST)
+    public String changeBannerPicture(ModelMap model, @RequestParam String newBannerPicture, HttpSession session) {
+
+        if (!service.isImageFile(newBannerPicture)) {
+            model.addAttribute("alertMessage", "Invalid file, please upload a valid image file");
+            return "profile";
+        }
+
+        model.addAttribute("alertMessage", "Your banner picture has been changed successfully");
+        return "profile";
+    }
+
 }

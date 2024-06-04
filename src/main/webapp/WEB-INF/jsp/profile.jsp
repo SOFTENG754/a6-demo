@@ -24,6 +24,13 @@
         <button type="submit" id="changeProfilePictureBtn">Change Profile Picture</button>
     </form>
 
+    <h2>Upload profile picture</h2>
+    <form method="post" action="uploadBannerPicture">
+        <label for="newProfilePicture">Choose a profile picture:</label>
+        <input type="text" name="newBannerPicture" id="newBannerPicture" required />
+        <button type="submit" id="changeBannerPictureBtn">Change Profile Picture</button>
+    </form>
+
 
     <c:if test="${not empty alertMessage}">
         <script type="text/javascript">

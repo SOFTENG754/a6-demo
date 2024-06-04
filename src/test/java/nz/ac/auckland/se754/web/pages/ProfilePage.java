@@ -32,6 +32,14 @@ public class ProfilePage {
     @FindBy(how = How.ID, using = "changeProfilePictureBtn")
     private WebElement changeProfilePictureButton;
 
+    @FindBy(how = How.ID, using = "newBannerPicture")
+    private WebElement newBannerPicture;
+
+    @FindBy(how = How.ID, using = "changeBannerPictureBtn")
+    private WebElement changeBannerPictureButton;
+
+
+
     public void enterNewUsername(String newUsername) {
         this.newUsername.sendKeys(newUsername);
     }
@@ -60,9 +68,10 @@ public class ProfilePage {
     }
 
     public void uploadNewBannerPicture(String bannerPicture) {
-        
+        newBannerPicture.sendKeys(bannerPicture);
     }
 
     public void clickChangeBannerPictureButton() {
+        this.changeBannerPictureButton.click();
     }
 }
