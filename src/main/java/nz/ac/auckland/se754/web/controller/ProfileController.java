@@ -126,4 +126,12 @@ public class ProfileController {
         return ResponseEntity.ok().build();
     }
 
+    @RequestMapping(value = "/profile/removeBannerPicture", method = RequestMethod.POST)
+    public ResponseEntity<String> removeBannerPicture(ModelMap model, HttpSession session) {
+        service.updateBannerPicture(dummyUser, "");
+        Mockito.when(dummyUser.getBannerPicture()).thenReturn("");
+        updateModelAttributes(model);
+        return ResponseEntity.ok().build();
+    }
+
 }

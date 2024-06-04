@@ -25,6 +25,20 @@
             xhr.send();
         }
 
+        function removeBannerPicture() {
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "${pageContext.request.contextPath}/profile/removeBannerPicture", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function () {
+                if (xhr.status === 200) {
+                    location.reload(); // reload the page to update the changes
+                } else {
+                    alert("Error")
+                }
+            };
+            xhr.send();
+        }
+
     </script>
 
 <body>
@@ -57,12 +71,23 @@
 
 
     <h2>Banner Picture</h2>
-    <p id="bannerPicture">${bannerPicture}</p>
+    <p id="bannerPicture">
+        <c:choose>
+            <c:when test="${empty bannerPicture}">
+                No banner picture
+            </c:when>
+            <c:otherwise>
+                ${bannerPicture}
+            </c:otherwise>
+        </c:choose>
+    </p>
     <form method="post" action="uploadBannerPicture">
         <label for="newProfilePicture">Upload a banner picture:</label>
         <input type="text" name="newBannerPicture" id="newBannerPicture" required />
         <button type="submit" id="changeBannerPictureBtn">Change Banner Picture</button>
     </form>
+    <button id="removeBannerPictureBtn" onclick="removeBannerPicture()">Remove Banner Picture</button>
+
 
     <h2>Flags</h2>
     <form method="post" action="updateFlags">
