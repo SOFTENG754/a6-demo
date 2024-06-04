@@ -4,6 +4,7 @@ import nz.ac.auckland.se754.web.model.User;
 import nz.ac.auckland.se754.web.service.Database;
 import nz.ac.auckland.se754.web.service.Profile;
 import org.mockito.Mockito;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -115,6 +116,14 @@ public class ProfileController {
         model.addAttribute("alertMessage", "Your theme has been changed to " + theme);
         service.updateTheme(dummyUser, theme);
         return "profile";
+    }
+
+    @RequestMapping(value = "/profile/removeProfilePicture", method = RequestMethod.POST)
+    public ResponseEntity<String> removeProfilePicture(ModelMap model, HttpSession session) {
+        service.updateProfilePicture(dummyUser, "");
+        Mockito.when(dummyUser.getProfilePicture()).thenReturn("");
+        updateModelAttributes(model);
+        return ResponseEntity.ok().build();
     }
 
 }

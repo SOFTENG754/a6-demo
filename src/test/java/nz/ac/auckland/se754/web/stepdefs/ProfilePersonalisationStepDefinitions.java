@@ -157,6 +157,6 @@ public class ProfilePersonalisationStepDefinitions {
     @Then("I should see no profile picture")
     public void iShouldSeeNoProfilePicture() {
         String profilePicture = profilePage.getProfilePicture();
-        assertTrue(profilePicture.isEmpty());
+        assertEquals("No profile picture", profilePicture);
     }
 }

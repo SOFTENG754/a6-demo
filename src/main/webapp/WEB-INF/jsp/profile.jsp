@@ -10,6 +10,21 @@
         function showAlert(message) {
             alert(message);
         }
+
+        function removeProfilePicture() {
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "${pageContext.request.contextPath}/profile/removeProfilePicture", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function () {
+                if (xhr.status === 200) {
+                    location.reload(); // reload the page to update the changes
+                } else {
+                    alert("Error")
+                }
+            };
+            xhr.send();
+        }
+
     </script>
 
 <body>
@@ -23,12 +38,23 @@
     </form>
 
     <h2>Profile Picture</h2>
-    <p id="profilePicture">${profilePicture}</p>
     <form method="post" action="uploadProfilePicture">
+        <p id="profilePicture">
+            <c:choose>
+                <c:when test="${empty profilePicture}">
+                    No profile picture
+                </c:when>
+                <c:otherwise>
+                    ${profilePicture}
+                </c:otherwise>
+            </c:choose>
+        </p>
         <label for="newProfilePicture">Upload a new profile picture:</label>
         <input type="text" name="newProfilePicture" id="newProfilePicture" required />
         <button type="submit" id="changeProfilePictureBtn">Change Profile Picture</button>
     </form>
+    <button id="removeProfilePictureBtn" onclick="removeProfilePicture()">Remove Profile Picture</button>
+
 
     <h2>Banner Picture</h2>
     <p id="bannerPicture">${bannerPicture}</p>
