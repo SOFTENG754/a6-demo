@@ -36,3 +36,7 @@ Feature: Profile Personalisation
     When I select "Dark" theme
     And I press the change theme button
     Then I should see an alert message pop-up saying theme successfully changed
+
+  Scenario: user wants to see their profile information
+    Given I visit the profile page
+    Then I should see my current profile information
