@@ -32,20 +32,39 @@ public class User {
         this.username = username;
     }
 
+    public String getProfilePicture() {
+        return profilePicture;
+    }
+
     public void setProfilePicture(String profilePicture) {
         this.profilePicture = profilePicture;
     }
 
+    public String getBannerPicture() {
+        return bannerPicture;
+    }
     public void setBannerPicture(String bannerPicture) {
         this.bannerPicture = bannerPicture;
+    }
+
+    public String[] getFlags() {
+        return flags;
     }
 
     public void setFlags(String[] flags) {
         this.flags = flags;
     }
 
+    public String getStatusMessage() {
+        return statusMessage;
+    }
+
     public void setStatusMessage(String message) {
         this.statusMessage = message;
+    }
+
+    public String getTheme() {
+        return theme;
     }
 
     public void setTheme(String theme) {

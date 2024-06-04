@@ -82,7 +82,6 @@ public class ProfilePage {
     private WebElement bannerPicture;
 
 
-
     public void enterNewUsername(String newUsername) {
         this.newUsername.sendKeys(newUsername);
     }

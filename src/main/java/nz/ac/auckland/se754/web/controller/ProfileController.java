@@ -11,17 +11,41 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
+import java.util.Arrays;
+import java.util.List;
 
 @Controller
 public class ProfileController {
-
     private final User dummyUser = Mockito.mock(User.class);
     private final Database mockDB = Mockito.mock(Database.class);
     private final Profile service = new Profile(mockDB);
 
+    // Constructor to set up new user and initialize services
+    public ProfileController() {
+        // Initialize user profile with preset values
+        Mockito.when(dummyUser.getUsername()).thenReturn("currentUsername");
+        Mockito.when(dummyUser.getProfilePicture()).thenReturn("/profile.png");
+        Mockito.when(dummyUser.getBannerPicture()).thenReturn("/banner.png");
+        Mockito.when(dummyUser.getFlags()).thenReturn(new String[] {"New Zealand", "Australia"});
+        Mockito.when(dummyUser.getStatusMessage()).thenReturn("current status message");
+        Mockito.when(dummyUser.getTheme()).thenReturn("Dark");
+    }
+
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
-    public String showProfilePage() {
+    public String showProfilePage(ModelMap model) {
+        updateModelAttributes(model);
         return "profile";
+    }
+
+    private void updateModelAttributes(ModelMap model) {
+        // Populate the model with user profile information
+        model.addAttribute("username", dummyUser.getUsername());
+        model.addAttribute("profilePicture", dummyUser.getProfilePicture());
+        model.addAttribute("bannerPicture", dummyUser.getBannerPicture());
+        List<String> flags = Arrays.asList(dummyUser.getFlags());
+        model.addAttribute("flags", flags);
+        model.addAttribute("statusMessage", dummyUser.getStatusMessage());
+        model.addAttribute("theme", dummyUser.getTheme());
     }
 
     @RequestMapping(value = "/changeUsername", method = RequestMethod.POST)
