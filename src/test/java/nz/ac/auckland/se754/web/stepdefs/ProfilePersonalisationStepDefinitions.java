@@ -42,8 +42,8 @@ public class ProfilePersonalisationStepDefinitions {
         assertEquals(expectedAlertText, alertText);
     }
 
-    @When("I upload an image file")
-    public void i_upload_an_image_file() {
+    @When("I upload an image file for the profile picture")
+    public void i_upload_an_image_file_for_the_profile_picture() {
         profilePage.uploadNewProfilePicture("/image.png");
     }
 

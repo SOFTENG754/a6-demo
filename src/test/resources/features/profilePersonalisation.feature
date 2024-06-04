@@ -9,6 +9,12 @@ Feature: Profile Personalisation
 
   Scenario: user wants to change their profile picture
     Given I visit the profile page
-    When I upload an image file
+    When I upload an image file for the profile picture
     And I press the change profile picture button
     Then I should see an alert message pop-up saying profile picture successfully changed
+
+  Scenario: user wants to change their banner picture
+    Given I visit the profile page
+    When I upload an image file for the banner picture
+    And I press the change banner picture button
+    Then I should see an alert message pop-up saying banner picture successfully changed
