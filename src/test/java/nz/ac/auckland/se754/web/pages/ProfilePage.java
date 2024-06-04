@@ -38,6 +38,24 @@ public class ProfilePage {
     @FindBy(how = How.ID, using = "changeBannerPictureBtn")
     private WebElement changeBannerPictureButton;
 
+    @FindBy(how = How.ID, using = "changeFlagsBtn")
+    private WebElement changeFlagsButton;
+
+    @FindBy(how = How.ID, using = "flagNZ")
+    private WebElement flagNZ;
+
+    @FindBy(how = How.ID, using = "flagAustralia")
+    private WebElement flagAustralia;
+
+    @FindBy(how = How.ID, using = "flagChina")
+    private WebElement flagChina;
+
+    @FindBy(how = How.ID, using = "flagUSA")
+    private WebElement flagUSA;
+
+    @FindBy(how = How.ID, using = "flagUK")
+    private WebElement flagUK;
+
 
 
     public void enterNewUsername(String newUsername) {
@@ -73,5 +91,42 @@ public class ProfilePage {
 
     public void clickChangeBannerPictureButton() {
         this.changeBannerPictureButton.click();
+    }
+
+    public void selectFlags(String[] flags) {
+        for (String flag : flags) {
+            switch (flag) {
+                case "New Zealand" -> {
+                    if (!flagNZ.isSelected()) {
+                        flagNZ.click();
+                    }
+                }
+                case "Australia" -> {
+                    if (!flagAustralia.isSelected()) {
+                        flagAustralia.click();
+                    }
+                }
+                case "China" -> {
+                    if (!flagChina.isSelected()) {
+                        flagChina.click();
+                    }
+                }
+                case "USA" -> {
+                    if (!flagUSA.isSelected()) {
+                        flagUSA.click();
+                    }
+                }
+                case "UK" -> {
+                    if (!flagUK.isSelected()) {
+                        flagUK.click();
+                    }
+                }
+            }
+        }
+    }
+
+
+    public void clickChangeFlagsButton() {
+        this.changeFlagsButton.click();
     }
 }

@@ -76,4 +76,20 @@ public class ProfilePersonalisationStepDefinitions {
         assertEquals(expectedAlertText, alertText);
     }
 
+    @When("I select flags")
+    public void i_selectFlags() {
+        profilePage.selectFlags(new String[] {"New Zealand", "Australia"});
+    }
+
+    @When("I press the update flags button")
+    public void i_press_the_update_flags_button() {
+        profilePage.clickChangeFlagsButton();
+    }
+
+    @Then("I should see an alert message pop-up saying flag successfully changed")
+    public void i_should_see_an_alert_message_pop_up_saying_flag_successfully_changed() {
+        String alertText = profilePage.getAlertText();
+        String expectedAlertText = "Your flags have been changed successfully";
+        assertEquals(expectedAlertText, alertText);
+    }
 }

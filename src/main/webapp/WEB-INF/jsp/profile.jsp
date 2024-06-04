@@ -24,11 +24,11 @@
         <button type="submit" id="changeProfilePictureBtn">Change Profile Picture</button>
     </form>
 
-    <h2>Upload profile picture</h2>
+    <h2>Upload banner picture</h2>
     <form method="post" action="uploadBannerPicture">
-        <label for="newProfilePicture">Choose a profile picture:</label>
+        <label for="newProfilePicture">Choose a banner picture:</label>
         <input type="text" name="newBannerPicture" id="newBannerPicture" required />
-        <button type="submit" id="changeBannerPictureBtn">Change Profile Picture</button>
+        <button type="submit" id="changeBannerPictureBtn">Change Banner Picture</button>
     </form>
 
 
