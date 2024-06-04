@@ -40,3 +40,8 @@ Feature: Profile Personalisation
   Scenario: user wants to see their profile information
     Given I visit the profile page
     Then I should see my current profile information
+
+  Scenario: user wants to remove profile picture
+    Given I visit the profile page
+    When I press the remove profile picture button
+    Then I should see no profile picture
