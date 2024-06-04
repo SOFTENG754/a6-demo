@@ -45,3 +45,8 @@ Feature: Profile Personalisation
     Given I visit the profile page
     When I press the remove profile picture button
     Then I should see no profile picture
+
+  Scenario: user wants to remove banner picture
+    Given I visit the profile page
+    When I press the remove banner picture button
+    Then I should see no banner picture
