@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ProfilePage {
@@ -61,6 +62,12 @@ public class ProfilePage {
 
     @FindBy(how = How.ID, using = "changeStatusBtn")
     private WebElement changeStatusButton;
+
+    @FindBy(how = How.ID, using = "theme")
+    private WebElement themeDropdown;
+
+    @FindBy(how = How.ID, using = "changeThemeBtn")
+    private WebElement changeThemeButton;
 
 
     public void enterNewUsername(String newUsername) {
@@ -141,5 +148,14 @@ public class ProfilePage {
 
     public void clickChangeStatusButton() {
         this.changeStatusButton.click();
+    }
+
+    public void selectTheme(String theme) {
+        Select dropdown = new Select(this.themeDropdown);
+        dropdown.selectByVisibleText(theme);
+    }
+
+    public void clickChangeThemeButton() {
+        this.changeThemeButton.click();
     }
 }

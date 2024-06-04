@@ -112,4 +112,19 @@ public class ProfilePersonalisationStepDefinitions {
         String expectedAlertText = "Your status message has been changed successfully";
         assertEquals(expectedAlertText, alertText);
     }
+
+    @When("I select {string} theme")
+    public void i_select_theme(String theme) {
+        profilePage.selectTheme(theme);
+    }
+
+    @And("I press the change theme button")
+    public void i_press_the_change_theme_button() {
+        profilePage.clickChangeThemeButton();
+    }
+
+    @Then("I should see an alert message pop-up saying theme successfully changed")
+    public void i_should_see_an_alert_message_pop_up_saying_status_theme_changed() {
+
+    }
 }
