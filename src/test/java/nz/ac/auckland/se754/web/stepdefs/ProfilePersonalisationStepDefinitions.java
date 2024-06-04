@@ -8,6 +8,7 @@ import io.cucumber.java.en.When;
 import nz.ac.auckland.se754.web.pages.ProfilePage;
 import org.openqa.selenium.WebDriver;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ProfilePersonalisationStepDefinitions {
@@ -128,5 +129,24 @@ public class ProfilePersonalisationStepDefinitions {
         String alertText = profilePage.getAlertText();
         String expectedAlertText = "Your theme has been changed to dark";
         assertEquals(expectedAlertText, alertText);
+    }
+
+
+    @Then("I should see my current profile information")
+    public void i_should_see_my_current_profile_information() {
+
+        String username = profilePage.getUsernameText();
+        String profilePicture = profilePage.getProfilePicture();
+        String bannerPicture = profilePage.getBannerPicture();
+        String[] flags = profilePage.getCurrentFlags();
+        String statusMessage = profilePage.getStatusMessage();
+        String theme = profilePage.getCurrentTheme();
+
+        assertEquals("currentUsername", username);
+        assertEquals("/profile.png", profilePicture);
+        assertEquals("/banner.png", bannerPicture);
+        assertArrayEquals(new String[]{"New Zealand", "Australia"}, flags);
+        assertEquals("current status message", statusMessage);
+        assertEquals("Dark", theme);
     }
 }

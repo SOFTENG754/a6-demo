@@ -11,6 +11,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ProfilePage {
     private final WebDriver driver;
     public ProfilePage(WebDriver driver) {
@@ -68,6 +71,16 @@ public class ProfilePage {
 
     @FindBy(how = How.ID, using = "changeThemeBtn")
     private WebElement changeThemeButton;
+
+    @FindBy(how = How.ID, using = "username")
+    private WebElement username;
+
+    @FindBy(how = How.ID, using = "profilePicture")
+    private WebElement profilePicture;
+
+    @FindBy(how = How.ID, using = "bannerPicture")
+    private WebElement bannerPicture;
+
 
 
     public void enterNewUsername(String newUsername) {
@@ -158,4 +171,47 @@ public class ProfilePage {
     public void clickChangeThemeButton() {
         this.changeThemeButton.click();
     }
+
+    public String getUsernameText() {
+        return username.getText();
+    }
+
+    public String getProfilePicture() {
+        return profilePicture.getText();
+    }
+
+    public String getBannerPicture() {
+        return bannerPicture.getText();
+    }
+
+    public String[] getCurrentFlags() {
+        List<String> selectedFlags = new ArrayList<>();
+
+        if (flagNZ.isSelected()) {
+            selectedFlags.add("New Zealand");
+        }
+        if (flagAustralia.isSelected()) {
+            selectedFlags.add("Australia");
+        }
+        if (flagChina.isSelected()) {
+            selectedFlags.add("China");
+        }
+        if (flagUSA.isSelected()) {
+            selectedFlags.add("USA");
+        }
+        if (flagUK.isSelected()) {
+            selectedFlags.add("UK");
+        }
+
+        return selectedFlags.toArray(new String[0]);
+    }
+    public String getStatusMessage() {
+        return statusMessage.getAttribute("value");
+    }
+
+    public String getCurrentTheme() {
+        Select dropdown = new Select(this.themeDropdown);
+        return dropdown.getFirstSelectedOption().getText();
+    }
+
 }
