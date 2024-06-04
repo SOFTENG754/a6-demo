@@ -37,4 +37,5 @@ public class Profile {
     public void updateProfilePicture(User user, String profilePicture)  {user.setProfilePicture(profilePicture);}
     public void updateBannerPicture(User user, String bannerPicture) {user.setBannerPicture(bannerPicture);}
     public void updateFlags(User user, String[] flags) {user.setFlags(flags);}
+    public void updateStatusMessage(User user, String message) {user.setStatusMessage(message);}
 }

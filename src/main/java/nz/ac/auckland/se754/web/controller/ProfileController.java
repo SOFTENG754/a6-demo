@@ -82,6 +82,7 @@ public class ProfileController {
     @RequestMapping(value = "/changeStatusMessage", method = RequestMethod.POST)
     public String changeStatusMessage(ModelMap model, @RequestParam String statusMessage, HttpSession session) {
         model.addAttribute("alertMessage", "Your status message has been changed successfully");
+        service.updateStatusMessage(dummyUser, statusMessage);
         return "profile";
     }
 

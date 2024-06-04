@@ -15,6 +15,7 @@ public class User {
     public String profilePicture;
     public String bannerPicture;
     public String[] flags;
+    public String statusMessage;
 
     public User(String username){
         this.username = username;
@@ -40,6 +41,10 @@ public class User {
 
     public void setFlags(String[] flags) {
         this.flags = flags;
+    }
+
+    public void setStatusMessage(String message) {
+        this.statusMessage = message;
     }
 
     public void setCourses(Course[] courses){
