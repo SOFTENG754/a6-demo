@@ -24,3 +24,9 @@ Feature: Profile Personalisation
     When I select flags
     And I press the update flags button
     Then I should see an alert message pop-up saying flag successfully changed
+
+  Scenario: user wants to update status message
+    Given I visit the profile page
+    When I enter "Hello everyone" in the status field
+    And I press the update status button
+    Then I should see an alert message pop-up saying status successfully changed
