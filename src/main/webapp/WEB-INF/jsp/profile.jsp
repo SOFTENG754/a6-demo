@@ -12,7 +12,7 @@
 <body>
     <h1>Profile</h1>
     <h2>Enter new username to change username</h2>
-    <form method="post" action="/changeUsername">
+    <form method="post" action="changeUsername">
         New Username: <input type="text" name="newUsername" id="newUsername" required />
         <button type="submit" id="changeUsernameBtn">Change Username</button>
     </form>
@@ -51,6 +51,16 @@
     <form method="post" action="changeStatusMessage">
         Status: <input type="text" name="statusMessage" id="statusMessage" value="" required />
         <button type="submit" id="changeStatusBtn">Change Status</button>
+    </form>
+
+    <h2>Choose a theme</h2>
+    <form method="post" action="changeTheme">
+        <label for="theme">Choose a theme:</label>
+        <select name="theme" id="theme" required>
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+        </select>
+        <button type="submit" id="changeThemeBtn">Change Theme</button>
     </form>
 
 

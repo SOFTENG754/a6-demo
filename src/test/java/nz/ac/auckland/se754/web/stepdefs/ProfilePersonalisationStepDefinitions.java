@@ -125,6 +125,8 @@ public class ProfilePersonalisationStepDefinitions {
 
     @Then("I should see an alert message pop-up saying theme successfully changed")
     public void i_should_see_an_alert_message_pop_up_saying_status_theme_changed() {
-
+        String alertText = profilePage.getAlertText();
+        String expectedAlertText = "Your theme has been changed to dark";
+        assertEquals(expectedAlertText, alertText);
     }
 }

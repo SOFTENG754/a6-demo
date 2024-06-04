@@ -33,6 +33,6 @@ Feature: Profile Personalisation
 
   Scenario: user wants to change app theme
     Given I visit the profile page
-    When I select "dark" theme
+    When I select "Dark" theme
     And I press the change theme button
     Then I should see an alert message pop-up saying theme successfully changed
