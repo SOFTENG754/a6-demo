@@ -18,3 +18,9 @@ Feature: Profile Personalisation
     When I upload an image file for the banner picture
     And I press the change banner picture button
     Then I should see an alert message pop-up saying banner picture successfully changed
+
+  Scenario: user wants to update their flags
+    Given I visit the profile page
+    When I select flags
+    And I press the update flags button
+    Then I should see an alert message pop-up saying flag successfully changed
