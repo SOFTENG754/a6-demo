@@ -14,6 +14,7 @@ public class User {
     Course[] courses;
     public String profilePicture;
     public String bannerPicture;
+    public String[] flags;
 
     public User(String username){
         this.username = username;
@@ -35,6 +36,10 @@ public class User {
 
     public void setBannerPicture(String bannerPicture) {
         this.bannerPicture = bannerPicture;
+    }
+
+    public void setFlags(String[] flags) {
+        this.flags = flags;
     }
 
     public void setCourses(Course[] courses){

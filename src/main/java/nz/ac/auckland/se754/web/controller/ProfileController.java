@@ -70,6 +70,9 @@ public class ProfileController {
     public String changeFlags(ModelMap model, @RequestParam(value = "flags", required = false) String[] flags, HttpSession session) {
         if (flags != null) {
             System.out.println("Selected flags: " + String.join(", ", flags));
+            service.updateFlags(dummyUser, flags);
+        } else {
+            service.updateFlags(dummyUser, new String[] {});
         }
         model.addAttribute("alertMessage", "Your flags have been changed successfully");
 
