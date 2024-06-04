@@ -66,4 +66,14 @@ public class ProfileController {
         return "profile";
     }
 
+    @RequestMapping(value = "/updateFlags", method = RequestMethod.POST)
+    public String changeFlags(ModelMap model, @RequestParam(value = "flags", required = false) String[] flags, HttpSession session) {
+        if (flags != null) {
+            System.out.println("Selected flags: " + String.join(", ", flags));
+        }
+        model.addAttribute("alertMessage", "Your flags have been changed successfully");
+
+        return "profile";
+    }
+
 }
