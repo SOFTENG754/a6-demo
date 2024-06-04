@@ -59,4 +59,21 @@ public class ProfilePersonalisationStepDefinitions {
         assertEquals(expectedAlertText, alertText);
     }
 
+    @When("I upload an image file for the banner picture")
+    public void i_upload_an_image_file_for_the_banner_picture() {
+        profilePage.uploadNewBannerPicture("/image.jpg");
+    }
+
+    @When("I press the change banner picture button")
+    public void i_press_the_change_banner_picture_button() {
+        profilePage.clickChangeBannerPictureButton();
+    }
+
+    @Then("I should see an alert message pop-up saying banner picture successfully changed")
+    public void i_should_see_an_alert_message_pop_up_saying_banner_picture_successfully_changed() {
+        String alertText = profilePage.getAlertText();
+        String expectedAlertText = "Your banner picture has been changed successfully";
+        assertEquals(expectedAlertText, alertText);
+    }
+
 }

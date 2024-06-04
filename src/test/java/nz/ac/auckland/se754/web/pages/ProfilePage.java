@@ -58,4 +58,11 @@ public class ProfilePage {
     public void clickChangeProfilePictureButton() {
         this.changeProfilePictureButton.click();
     }
+
+    public void uploadNewBannerPicture(String bannerPicture) {
+        
+    }
+
+    public void clickChangeBannerPictureButton() {
+    }
 }
