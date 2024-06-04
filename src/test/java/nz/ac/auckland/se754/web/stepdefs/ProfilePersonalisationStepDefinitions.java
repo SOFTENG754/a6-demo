@@ -155,8 +155,19 @@ public class ProfilePersonalisationStepDefinitions {
     }
 
     @Then("I should see no profile picture")
-    public void iShouldSeeNoProfilePicture() {
+    public void i_should_see_no_profile_picture() {
         String profilePicture = profilePage.getProfilePicture();
         assertEquals("No profile picture", profilePicture);
+    }
+
+    @When("I press the remove banner picture button")
+    public void i_press_the_remove_banner_picture_button() {
+        profilePage.clickRemoveBannerPictureButton();
+    }
+
+    @Then("I should see no banner picture")
+    public void i_should_see_no_banner_picture() {
+        String bannerPicture = profilePage.getBannerPicture();
+        assertEquals("No banner picture", bannerPicture);
     }
 }

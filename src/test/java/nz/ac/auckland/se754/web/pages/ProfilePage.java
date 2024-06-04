@@ -84,6 +84,9 @@ public class ProfilePage {
     @FindBy(how = How.ID, using = "removeProfilePictureBtn")
     private WebElement removeProfilePictureButton;
 
+    @FindBy(how = How.ID, using = "removeBannerPictureBtn")
+    private WebElement removeBannerPictureButton;
+
 
     public void enterNewUsername(String newUsername) {
         this.newUsername.sendKeys(newUsername);
@@ -218,6 +221,10 @@ public class ProfilePage {
 
     public void clickRemoveProfilePictureButton() {
         removeProfilePictureButton.click();
+    }
+
+    public void clickRemoveBannerPictureButton() {
+        removeBannerPictureButton.click();
     }
 
 }
