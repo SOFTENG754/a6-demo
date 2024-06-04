@@ -2,9 +2,9 @@ package nz.ac.auckland.se754.web.model;
 
 public class Category {
     private String name;
-    private final CourseItem[] courses;
+    private final String[] courses;
 
-    public Category(String name, CourseItem[] courses) {
+    public Category(String name, String[] courses) {
         this.name = name;
         this.courses = courses;
     }
@@ -17,7 +17,7 @@ public class Category {
         this.name = name;
     }
 
-    public CourseItem[] getCourses() {
+    public String[] getCourses() {
         return courses;
     }
 }

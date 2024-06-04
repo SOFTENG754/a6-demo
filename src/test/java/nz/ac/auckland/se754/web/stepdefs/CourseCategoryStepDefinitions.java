@@ -29,4 +29,9 @@ public class CourseCategoryStepDefinitions {
         assertArrayEquals(new String[]{"Category 1", "Category 2", "Category 3"}, categories);
 
     }
+
+    @Then("I should see the courses under each category")
+    public void i_should_see_the_courses_under_each_category() {
+
+    }
 }
