@@ -89,6 +89,7 @@ public class ProfileController {
     @RequestMapping(value = "/changeTheme", method = RequestMethod.POST)
     public String changeTheme(ModelMap model, @RequestParam("theme") String theme, HttpSession session) {
         model.addAttribute("alertMessage", "Your theme has been changed to " + theme);
+        service.updateTheme(dummyUser, theme);
         return "profile";
     }
 

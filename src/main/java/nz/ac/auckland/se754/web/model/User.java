@@ -16,6 +16,7 @@ public class User {
     public String bannerPicture;
     public String[] flags;
     public String statusMessage;
+    public String theme;
 
     public User(String username){
         this.username = username;
@@ -45,6 +46,10 @@ public class User {
 
     public void setStatusMessage(String message) {
         this.statusMessage = message;
+    }
+
+    public void setTheme(String theme) {
+        this.theme = theme;
     }
 
     public void setCourses(Course[] courses){
