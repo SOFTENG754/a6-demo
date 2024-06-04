@@ -8,8 +8,7 @@ import io.cucumber.java.en.When;
 import nz.ac.auckland.se754.web.pages.ProfilePage;
 import org.openqa.selenium.WebDriver;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ProfilePersonalisationStepDefinitions {
 
@@ -148,5 +147,16 @@ public class ProfilePersonalisationStepDefinitions {
         assertArrayEquals(new String[]{"New Zealand", "Australia"}, flags);
         assertEquals("current status message", statusMessage);
         assertEquals("Dark", theme);
+    }
+
+    @When("I press the remove profile picture button")
+    public void i_press_the_remove_profile_picture_button() {
+        profilePage.clickRemoveProfilePictureButton();
+    }
+
+    @Then("I should see no profile picture")
+    public void iShouldSeeNoProfilePicture() {
+        String profilePicture = profilePage.getProfilePicture();
+        assertTrue(profilePicture.isEmpty());
     }
 }

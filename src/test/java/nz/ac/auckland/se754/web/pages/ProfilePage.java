@@ -81,6 +81,9 @@ public class ProfilePage {
     @FindBy(how = How.ID, using = "bannerPicture")
     private WebElement bannerPicture;
 
+    @FindBy(how = How.ID, using = "removeProfilePictureBtn")
+    private WebElement removeProfilePictureButton;
+
 
     public void enterNewUsername(String newUsername) {
         this.newUsername.sendKeys(newUsername);
@@ -211,6 +214,10 @@ public class ProfilePage {
     public String getCurrentTheme() {
         Select dropdown = new Select(this.themeDropdown);
         return dropdown.getFirstSelectedOption().getText();
+    }
+
+    public void clickRemoveProfilePictureButton() {
+        removeProfilePictureButton.click();
     }
 
 }
