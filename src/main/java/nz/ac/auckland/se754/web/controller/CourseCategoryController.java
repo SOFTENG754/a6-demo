@@ -21,9 +21,9 @@ public class CourseCategoryController {
 
     private void initialiseCategories(ModelMap model) {
         List<Category> categoryList = Arrays.asList(
-                new Category("Category 1", new String[]{"course1", "course2"}),
-                new Category("Category 2", new String[]{"course3", "course4"}),
-                new Category("Category 3", new String[]{"course5"})
+                new Category("Category-1", new String[]{"course1", "course2"}),
+                new Category("Category-2", new String[]{"course3", "course4"}),
+                new Category("Category-3", new String[]{"course5"})
         );
 
         model.addAttribute("categoryList", categoryList);

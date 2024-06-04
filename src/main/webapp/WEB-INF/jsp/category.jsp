@@ -11,6 +11,13 @@
 <c:forEach items="${categoryList}" var="entry">
     <div class="category-item">
         <p class="category-name">${entry.name}</p>
+        <ul>
+            <c:forEach items="${entry.courses}" var="course">
+                <li class="course-item">
+                    <p class="${entry.name}-course-name">${course}</p>
+                </li>
+            </c:forEach>
+        </ul>
     </div>
 </c:forEach>
 </body>
