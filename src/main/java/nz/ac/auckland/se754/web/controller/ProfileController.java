@@ -24,7 +24,7 @@ public class ProfileController {
         return "profile";
     }
 
-    @RequestMapping(value = "/profile", method = RequestMethod.POST)
+    @RequestMapping(value = "/changeUsername", method = RequestMethod.POST)
     public String changeUsername(ModelMap model, @RequestParam String newUsername, HttpSession session) {
         Mockito.when(mockDB.checkUsernameExists("user1")).thenReturn(false);
 
@@ -76,6 +76,12 @@ public class ProfileController {
         }
         model.addAttribute("alertMessage", "Your flags have been changed successfully");
 
+        return "profile";
+    }
+
+    @RequestMapping(value = "/changeStatusMessage", method = RequestMethod.POST)
+    public String changeStatusMessage(ModelMap model, @RequestParam String statusMessage, HttpSession session) {
+        model.addAttribute("alertMessage", "Your status message has been changed successfully");
         return "profile";
     }
 

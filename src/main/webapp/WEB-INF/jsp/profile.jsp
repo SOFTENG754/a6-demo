@@ -12,7 +12,7 @@
 <body>
     <h1>Profile</h1>
     <h2>Enter new username to change username</h2>
-    <form method="post" action="/profile">
+    <form method="post" action="/changeUsername">
         New Username: <input type="text" name="newUsername" id="newUsername" required />
         <button type="submit" id="changeUsernameBtn">Change Username</button>
     </form>
@@ -45,6 +45,12 @@
         <input type="checkbox" name="flags" value="UK" id="flagUK">
         <label for="flagUK">UK</label><br>
         <button type="submit" id="changeFlagsBtn">Choose Flags</button>
+    </form>
+
+    <h2>Status Message</h2>
+    <form method="post" action="changeStatusMessage">
+        Status: <input type="text" name="statusMessage" id="statusMessage" value="" required />
+        <button type="submit" id="changeStatusBtn">Change Status</button>
     </form>
 
 
